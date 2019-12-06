@@ -18,9 +18,6 @@ class Controller extends AbstractController
      */
     public function index()
     {
-//
-        return $this->render('dashboard.html.twig', [
-            'controller_name' => 'Controller',
-        ]);
+        return $this->render('home/homepage.html.twig');
     }
 }
