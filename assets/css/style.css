@@ -1,0 +1,30 @@
+/* DOCUMENT INFORMATION
+	- Format:       CSS3 utf-8
+    - Document:     B.EXTRA
+	- Version:      1.0
+    - Author:       Meint-Willem Gaasbeek
+    - Author URI:   https://www.onetoweb.nl
+*/
+body {
+  padding-top: 56px;
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.dark-layer{
+  height: 65vh;
+  min-height: 300px;
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
