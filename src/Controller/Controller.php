@@ -18,50 +18,8 @@ class Controller extends AbstractController
      */
     public function index()
     {
-//        $stadgegevens = new Stadgegevens();
 //
-//        $stadgegevens->setPos('4');
-//        $stadgegevens->setGebruiksdoelVerblijfsobject('test');
-//        $stadgegevens->setVerblijfsobjectStatus('testen');
-//        $stadgegevens->setHuisnummer('3');
-//        $stadgegevens->setHuisletter('A');
-//        $stadgegevens->setHuisnummertoevoeging('abcd');
-//        $stadgegevens->setPostcode('7ABC');
-//        $stadgegevens->setTypeAdresseerbaarObject('J');
-//        $stadgegevens->setOpenbareRuimteNaam('adres');
-//
-//
-//        $data = <<<EOF
-//<Stadgegevens>
-//    <name>foo</name>
-//    <age>69</age>
-//</Stadgegevens>
-//EOF;
-//        $classMetadataFactory = new ClassMetadataFactory($loader);
-//        $normalizer = new ObjectNormalizer($classMetadataFactory);
-//        $serializer = new Serializer([$normalizer]);
-
-//        $normalizers = [
-//            new ObjectNormalizer(),
-//        ];
-//
-//        $encoders = [
-//            new XmlEncoder(),
-//        ];
-//
-//        $serializer = new  Serializer($normalizers, $encoders);
-//
-//        $serializedData = $serializer->serialize($stadgegevens, 'xml');
-//
-//        var_dump($serializedData); die;
-//
-//        return $this->Xml($stadgegevens);
-
-//        $serializer->deserialize($data, Stadgegevens::class, 'xml', [AbstractNormalizer::class => $stadgegevens]);
-
-
-
-        return $this->render('/index.html.twig', [
+        return $this->render('dashboard.html.twig', [
             'controller_name' => 'Controller',
         ]);
     }

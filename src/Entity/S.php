@@ -5,14 +5,19 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SRepository")
+ * S
+ *
+ * @ORM\Table(name="s")
+ * @ORM\Entity
  */
 class S
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -20,4 +25,6 @@ class S
     {
         return $this->id;
     }
+
+
 }

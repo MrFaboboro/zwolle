@@ -5,61 +5,91 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\StadgegevensRepository")
+ * Stadgegevens
+ *
+ * @ORM\Table(name="stadgegevens")
+ * @ORM\Entity
  */
 class Stadgegevens
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="pos", type="text", length=0, nullable=false)
      */
     private $pos;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="gebruiksdoel_verblijfsobject", type="text", length=0, nullable=false)
      */
     private $gebruiksdoelVerblijfsobject;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="verblijfsobject_status", type="text", length=0, nullable=false)
      */
     private $verblijfsobjectStatus;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="huisnummer", type="text", length=0, nullable=false)
      */
     private $huisnummer;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="huisletter", type="text", length=0, nullable=false)
      */
     private $huisletter;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="huisnummertoevoeging", type="text", length=0, nullable=false)
      */
     private $huisnummertoevoeging;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="postcode", type="text", length=0, nullable=false)
      */
     private $postcode;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="type_adresseerbaar_object", type="text", length=0, nullable=false)
      */
     private $typeAdresseerbaarObject;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="openbare_ruimte_naam", type="text", length=0, nullable=false)
      */
     private $openbareRuimteNaam;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="identificatie", type="text", length=0, nullable=false)
+     */
+    private $identificatie;
 
     public function getId(): ?int
     {
@@ -174,7 +204,17 @@ class Stadgegevens
         return $this;
     }
 
+    public function getIdentificatie(): ?string
+    {
+        return $this->identificatie;
+    }
+
+    public function setIdentificatie(string $identificatie): self
+    {
+        $this->identificatie = $identificatie;
+
+        return $this;
+    }
+
 
 }
-
-
