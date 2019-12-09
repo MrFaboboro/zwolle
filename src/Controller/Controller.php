@@ -14,9 +14,18 @@ use Symfony\Component\Serializer\Serializer;
 class Controller extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/")
      */
     public function index()
+    {
+        return $this->redirectToRoute('home');
+    }
+
+
+    /**
+     * @Route("/home", name="home")
+     */
+    public function home()
     {
         return $this->render('home/homepage.html.twig');
     }
