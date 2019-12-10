@@ -28,6 +28,7 @@ class ZwolleGegevens
      */
     private $data;
 
+
     /**
      * @var string
      *
