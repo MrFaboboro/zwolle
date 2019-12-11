@@ -35,7 +35,7 @@ class Controller extends AbstractController
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
             ->add('Zoek', TextType::class, ['label' => 'Zoek bedrijven op naam, adres of branche...'])
-            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
+//            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
             ->getForm()
         ;
 
@@ -58,7 +58,7 @@ class Controller extends AbstractController
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
             ->add('Zoek', TextType::class, ['label' => false])
-            ->add('submit', SubmitType::class, ['label' => 'Ga'])
+//            ->add('submit', SubmitType::class, ['label' => 'Ga'])
             ->getForm()
         ;
 

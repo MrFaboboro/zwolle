@@ -21,11 +21,11 @@
                         {{ form_start(form) }}
 
                             <div class="inner-form">
-                                <div class="input-field first-wrap">
-                                    <input id="search" type="text" placeholder="Zoek bedrijven op naam, adres of branche..." />
+                                <div class="input-field first-wrap" id="search">
+                                     {{ form_row(form.Zoek) }}
                                 </div>
                                 <div class="input-field third-wrap">
-                                    <button class="btn-search" type="button">Zoeken</button>
+                                    <input type="submit" class="btn-search" type="button">Zoek</input>
                                 </div>
                             </div>
                         {{ form_end(form) }}
