@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+                <h1 class="my-4">Resultaat
+                </h1>
+                {% if ZwolleGegevens %}
+                    {% for ZwolleGegevens in ZwolleGegevens %}
+                        <div class="my-4">
+                            <div class="card-body">
+                                <h2 class="card-title"> {{ ZwolleGegevens.ORG }}</h2>
+                                <p class="card-text"> {{ ZwolleGegevens.Email1 }}</p>
+{#                                <a style="width: 100%;" href="{{ path('blogshow', {'slug' : blogs.slug}) }}"  class="btn btn-outline-primary">Lees Verder</a>#}
+{#                                #}{#                            <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>#}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Er zijn Geen Gegevens gevonden</p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

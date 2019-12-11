@@ -26,12 +26,12 @@ class ZwolleGegevensRepository extends ServiceEntityRepository
             ->where(
                 $qb->expr()->andX(
                     $qb->expr()->orX(
-                        $qb->expr()->like('b.ADD1', ':Zoek'),
-                        $qb->expr()->like('b.PC', ':Zoek'),
-                        $qb->expr()->like('b.ORG ', ':Zoek'),
-                        $qb->expr()->like('b.Desc', ':Zoek')
-                    ),
-                    $qb->expr()->isNotNull('b.Desc1')
+                        $qb->expr()->like('b.add1', ':Zoek'),
+                        $qb->expr()->like('b.pc', ':Zoek'),
+                        $qb->expr()->like('b.org ', ':Zoek'),
+                        $qb->expr()->like('b.desc', ':Zoek')
+                    )
+//                    $qb->expr()->isNotNull('b.desc1')
                 )
             )
             ->setParameter('Zoek', '%' . $zoek . '%')

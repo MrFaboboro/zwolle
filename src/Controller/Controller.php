@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 
@@ -44,13 +45,13 @@ class Controller extends AbstractController
         }
 
         return $this->render('home/homepage.html.twig', [
-
+            'form' => $form->createView(),
             'ZwolleGegevens' => $ZwolleGegevens
         ]);
     }
 
     /**
-     * @Route("/home/zoek", name="handleSearch")
+     * @Route("/home/handleSearch", name="handleSearch")
      */
     public function handleSearch(Request $request, ZwolleGegevensRepository $zwolleGegevensRepository)
     {
@@ -63,9 +64,9 @@ class Controller extends AbstractController
 
         $zoek = $request->request->get('form')['Zoek'];
         if ($zoek) {
-            $ZwolleGegevens = $zwolleGegevensRepository->finditemsByName($zoek);
+            $ZwolleGegevens = $zwolleGegevensRepository->finditemByName($zoek);
         }
-        return $this->render('blog/results.html.twig', [
+        return $this->render('home/search.html.twig', [
             'form' => $form->createView(),
             'ZwolleGegevens' => $ZwolleGegevens
         ]);
