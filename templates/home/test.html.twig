@@ -23,7 +23,8 @@
 
     <html>
     <body>
-    <div id="map"></div>
+
+    <div class="container" id="map" style="width: 800px; height: 800px;"></div>
 
     <script>
         var customLabel = {
@@ -37,7 +38,7 @@
 
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: new google.maps.LatLng(-33.863276, 151.207977),
+                center: new google.maps(G37V+G4),
                 zoom: 12
             });
             var infoWindow = new google.maps.InfoWindow;
@@ -99,7 +100,7 @@
         function doNothing() {}
     </script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMkHJ8JOmKtDtxYBlzRmXDZg9XFs1um6U&callback=initMap">
     </script>
     </body>
     </html>
