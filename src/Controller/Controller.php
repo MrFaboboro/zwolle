@@ -27,6 +27,7 @@ class Controller extends AbstractController
      */
     public function home()
     {
+
         return $this->render('home/homepage.html.twig');
     }
 }
