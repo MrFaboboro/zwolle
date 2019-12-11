@@ -19,6 +19,28 @@ class ZwolleGegevensRepository extends ServiceEntityRepository
         parent::__construct($registry, ZwolleGegevens::class);
     }
 
+    public function finditemByName(string $zoek)
+    {
+        $qb = $this->createQueryBuilder('b');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('b.ADD1', ':Zoek'),
+                        $qb->expr()->like('b.PC', ':Zoek'),
+                        $qb->expr()->like('b.ORG ', ':Zoek'),
+                        $qb->expr()->like('b.beschrijving', ':Zoek')
+                    ),
+                    $qb->expr()->isNotNull('b.body')
+                )
+            )
+            ->setParameter('Zoek', '%' . $zoek . '%')
+        ;
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return ZwolleGegevens[] Returns an array of ZwolleGegevens objects
     //  */
