@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Stadgegevens;
+use App\Entity\ZwolleGegevens;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -27,7 +28,11 @@ class Controller extends AbstractController
      */
     public function home()
     {
-        return $this->render('home/homepage.html.twig');
+        $ZwolleGegevens = $this->getDoctrine()->getRepository(ZwolleGegevens::class)->findAll();
+
+        return $this->render('home/homepage.html.twig', [
+            'ZwolleGegevens' => $ZwolleGegevens
+        ]);
     }
 
     /**
