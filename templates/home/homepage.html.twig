@@ -52,7 +52,11 @@
                     <h4  style="text-align: center;" class="card-title">{{ ZwolleGegevens.ORG}}</h4>
                 </div>
                     <div class="card-body font-weight-light">
+                    {% if ZwolleGegevens.ADD1 %}
                         <p class="card-text">Adres: {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }}, {{ ZwolleGegevens.PC }}</p>
+                     {% else %}
+                     {% endif %}
+
                     {% if ZwolleGegevens.Email1 %}
                         <p class="card-text">Stad: {{ ZwolleGegevens.CITY }}</p>
                     {% else %}
