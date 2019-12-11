@@ -179,6 +179,30 @@ header{
   }
 }
 
+footer {
+  background: #202322;
+  padding: 42px 0 20px 0;
+  text-align: center;
+}
+footer p {
+  font-size: 14px;
+  color: #fff;
+  line-height: 1;
+}
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+/* =
 /*.search .fix-search {*/
 /*  display: -ms-flexbox;*/
 /*  position: relative;*/
