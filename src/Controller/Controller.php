@@ -34,7 +34,12 @@ class Controller extends AbstractController
 //
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
-            ->add('Zoek', TextType::class, ['label' => 'Zoeken'] )
+            ->add('Zoek', TextType::class, [
+                'required' => true,
+                'trim' => true,
+                'label' => false,
+                'attr' => array('placeholder' => 'Zoek naar bedrijven, branches, postcodes, straatnamen etc...' )
+            ])
 //            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
             ->getForm()
         ;
@@ -50,6 +55,8 @@ class Controller extends AbstractController
         ]);
     }
 
+
+
     /**
      * @Route("/home/handleSearch", name="handleSearch")
      */
@@ -57,7 +64,12 @@ class Controller extends AbstractController
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
-            ->add('Zoek', TextType::class, ['label' => false])
+            ->add('Zoek', TextType::class, [
+                'required' => true,
+                'trim' => true,
+                'label' => false,
+                'attr' => array('placeholder' => 'Zoek naar bedrijven, branches, postcodes, straatnamen etc...' )
+            ])
 //            ->add('submit', SubmitType::class, ['label' => 'Ga'])
             ->getForm()
         ;
