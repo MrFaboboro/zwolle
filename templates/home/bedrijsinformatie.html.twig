@@ -3,11 +3,12 @@
 
 {% block body %}
 {% if ZwolleGegevens %}
-    <div class="row">
+    <div style="padding-top: 40px;" class="row">
         {% for ZwolleGegevens in ZwolleGegevens %}
             <div class="container">
                 <div class="card mb-4">
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+{#                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">#}
+                    <div style="width: 750px;position: relative;"><iframe width="750" height="300" src="https://maps.google.com/maps?width=750&amp;height=300&amp;hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/nl/">gmapgen nl</a> & <a href="http://interexpo.nl/">PrefabWoningenPrijzenVergelijken (nl)</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
                         <h1 class="card-header">{{ ZwolleGegevens.ORG}}</h1>
                             <div class="card-body">
 
@@ -93,15 +94,36 @@
                             <p class="card-text">KVK Nummer: Er is geen KVK nummer gevonden.</p>
                         {% endif %}
                             </div>
-                        <h3 style="text-align: center;" class="card-header">Social Media</h3>
-                    <div style="text-align: center;" class="card-body">
+                             <div style="text-align: center;" class="card-body">
+                        {% if ZwolleGegevens.Facebook %}
+                        <a href="{{ ZwolleGegevens.Facebook }}" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+                        {% else %}
+                        {% endif %}
 
-                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
-                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-pinterest"><i class="fa fa-pinterest"></i></a>
-                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-youtube"><i class="fa fa-youtube"></i></a>
+                         {% if ZwolleGegevens.Twitter %}
+                        <a href="{{ ZwolleGegevens.Twitter }}" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+                        {% else %}
+                        {% endif %}
+
+                         {% if ZwolleGegevens.Linkedin %}
+                        <a href="{{ ZwolleGegevens.Linkedin }}" target="_blank" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                        {% else %}
+                        {% endif %}
+
+                         {% if ZwolleGegevens.Pintrest %}
+                        <a href="{{ ZwolleGegevens.Pintrest }}" target="_blank" class="btn-social btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                        {% else %}
+                        {% endif %}
+
+                         {% if ZwolleGegevens.Instagram %}
+                        <a href="{{ ZwolleGegevens.Instagram }}" target="_blank" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Youtube %}
+                        <a href="{{ ZwolleGegevens.Youtube }}" target="_blank" class="btn-social btn-youtube"><i class="fa fa-youtube"></i></a>
+                        {% else %}
+                        {% endif %}
 
                     </div>
                 </div>
