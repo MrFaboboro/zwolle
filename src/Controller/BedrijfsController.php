@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use App\Entity\ZwolleGegevens;
 use App\Repository\ZwolleGegevensRepository;
-use http\Client\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
