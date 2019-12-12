@@ -82,20 +82,20 @@ header{
   font-size: 20px;
 }
 
-.search form .inner-form .input-field input.placeholder {
-  color: #9a9a9a;
-  font-size: 20px;
-}
+/*.search form .inner-form .input-field input.placeholder {*/
+/*  color: #9a9a9a;*/
+/*  font-size: 20px;*/
+/*}*/
 
-.search form .inner-form .input-field input:-moz-placeholder {
-  color: #9a9a9a;
-  font-size: 20px;
-}
+/*.search form .inner-form .input-field input:-moz-placeholder {*/
+/*  color: #9a9a9a;*/
+/*  font-size: 20px;*/
+/*}*/
 
-.search form .inner-form .input-field input::-webkit-input-placeholder {
-  color: #9a9a9a;
-  font-size: 20px;
-}
+/*.search form .inner-form .input-field input::-webkit-input-placeholder {*/
+/*  color: #9a9a9a;*/
+/*  font-size: 20px;*/
+/*}*/
 
 .search form .inner-form .input-field input:hover, .search form .inner-form .input-field input:focus {
   box-shadow: none;

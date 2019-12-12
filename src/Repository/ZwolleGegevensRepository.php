@@ -29,7 +29,9 @@ class ZwolleGegevensRepository extends ServiceEntityRepository
                         $qb->expr()->like('b.add1', ':Zoek'),
                         $qb->expr()->like('b.pc', ':Zoek'),
                         $qb->expr()->like('b.org ', ':Zoek'),
-                        $qb->expr()->like('b.desc', ':Zoek')
+                        $qb->expr()->like('b.desc', ':Zoek'),
+                        $qb->expr()->like('b.desc1', ':Zoek')
+
                     )
 //                    $qb->expr()->isNotNull('b.desc1')
                 )

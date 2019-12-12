@@ -1,106 +1,764 @@
-{% extends 'base.html.twig' %}
+
 
 {% block body %}
-    <!DOCTYPE html >
+
+    <!DOCTYPE html>
+    <html lang="nl">
     <head>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-        <title>Using MySQL and PHP with Google Maps</title>
-        <style>
-            /* Always set the map height explicitly to define the size of the div
-             * element that contains the map. */
-            #map {
-                height: 100%;
-            }
-            /* Optional: Makes the sample page fill the window. */
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-        </style>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <link rel="sitemap" type="application/xml" title="sitemap" href="/sitemap.xml">
+
+
+        <meta name="google-site-verification" content="ppkK07Yy7wDSiw0eHZHOOMj4fC5gOC7V37rRVQKhga0">
+
+
+        <meta name="description" content="Trailerplus.nl de webshop voor Aanhanger onderdelen en Boottrailer onderdelen. Vanaf 75,- gratis verzending.">
+        <meta name="robots" content="all">
+
+        <base href="https://www.trailerplus.nl">
+        <title>Trailerplus.nl dé webshop voor Aanhanger &amp; Boottrailer onderdelen.</title>
+
+
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-17202250-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-17202250-1', { 'anonymize_ip':  false  },{'optimize_id': 'GTM-TWFTZ73'} );
+
+            gtag('set', 'exp', 'HYQ-pnxDRPyatmhUsdvSxg.1');
+        </script>
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-KGKVR69');</script>
+        <!-- End Google Tag Manager -->
+
+
+        <link href="/assets/min/css/core.min.css?v=12367" rel="stylesheet" />
+
+        <link href="/assets/css/templates/trailerplus3-min.css?v=12367" type="text/css" rel="stylesheet">
+
+
     </head>
-
-    <html>
     <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGKVR69" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="wrapper" id="page">
 
-    <div class="container" id="map" style="width: 800px; height: 800px;"></div>
+        <div class="header-wrapper">
+            <header class="service-header">
+                <div class="container-fluid">
+                    <ul class="services-left">
+                        <img src="assets/images/logo.png" >
+                        <li class="">
+                            <a class="" href="{{ path('home') }}">Home</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="center-right-wrapper">
+                        <ul class="services-center">
+                            <li><a href="/contact">Contact</a></li>
+
+                        </ul>
+
+                        <ul class="services-right">
+                               <li class="search" >
+                                <div class="search-wrapper">
+                                    <form action="/zoeken" method="get" autocomplete="off" >
+                                        <div class="form-group">
+                                            <div class="icon-addon addon-md">
+                                                <input id="search-1" onkeyup="javascript:tpsearch($(this).attr('id'));" type="search" name="q" placeholder="Vul hier uw zoekwoord in..." class="searchinput" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <header class="logo-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <img src="assets/images/logo.png" >
+                        </div>
+                        <div class="hidden-xs col-sm-6 col-sm-offset-2 col-lg-4 col-lg-offset-0">
+                            <form id="search-form-2" action="/zoeken" method="get" autocomplete="off">
+                                <div class="form-group">
+                                    <div class="icon-addon addon-md">
+                                        <input id="search-2" onkeyup="javascript:tpsearch($(this).attr('id'));" name="q" type="search" placeholder="Vul hier uw zoekwoord in..." class="form-control searchinput">
+                                        <label class="glyphicon glyphicon-search pointer" rel="tooltip" title="zoeken" onclick="document.getElementById('search-form-2').submit();"></label>
+                                    </div>
+                                </div>
+                                <div id="result-2" class="fastsearch"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <header class="navigation-header" id="nav">
+                <div class="container">
+                    <div class="navbar navbar-expand-sm navbar-dark bg-dark" >
+
+                            <form action="/zoeken" method="get" class="form-inline my-2 my-lg-0 hidden-sm hidden-md hidden-lg">
+                                <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" placeholder="Vul hier uw zoekwoord in.....">
+                                <button class="btn btn-default my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </div>
+
+                        <div class="hidden-md hidden-lg main-items">
+                            <a href="/aanhangeronderdelen.html" class="trailer">Aanhangwagen <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            <a href="/boottraileronderdelen.html" class="boat-trailer">Boottrailer <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+
+        <div class="clearfix"></div>
+
+        <header class="smartphone-search-header visible-xs" >
+            <div id="mobile-searchbar">
+                <div class="col-xs-12 col-md-4 col-md-pull-4">
+                    <div class="search_placeholder">
+                        <form action="/zoeken" method="get">
+                            <input id="search-3" onkeyup="javascript:tpsearch($(this).attr('id'));" type="search" name="q" placeholder="Vul hier uw zoekwoord in....." AUTOCOMPLETE="off" class="form-control searchinput">
+                            <button onClick="this.form.submit();"><i class="fa fa-search"></i></button>
+                        </form>
+                        <div id="result-3" class="fastsearch searchresult"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 mb-5">
+                <h2>Lorem ipsum</h2>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+                <a class="btn btn-primary btn-lg" href="#">Lorem ipsum &raquo;</a>
+            </div>
+            <div class="col-md-4 mb-5">
+                <h2>Lorem ipsums</h2>
+                <hr>
+                <address>
+                    <strong>Lorem ipsum</strong>
+                    <br>3481 Melrose Place
+                    <br>Beverly Hills, CA 90210
+                    <br>
+                </address>
+                <address>
+                    <abbr title="Phone">P:</abbr>
+                    (123) 456-7890
+                    <br>
+                    <abbr title="Email">E:</abbr>
+                    <a href="mailto:#">name@example.com</a>
+                </address>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8 mb-5">
+                    <h2>Lorem ipsum</h2>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+                    <a class="btn btn-primary btn-lg" href="#">Lorem ipsum &raquo;</a>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h2>Lorem ipsums</h2>
+                    <hr>
+                    <address>
+                        <strong>Lorem ipsum</strong>
+                        <br>3481 Melrose Place
+                        <br>Beverly Hills, CA 90210
+                        <br>
+                    </address>
+                    <address>
+                        <abbr title="Phone">P:</abbr>
+                        (123) 456-7890
+                        <br>
+                        <abbr title="Email">E:</abbr>
+                        <a href="mailto:#">name@example.com</a>
+                    </address>
+                </div>
+            </div><div class="container">
+
+                <div class="row">
+                    <div class="col-md-8 mb-5">
+                        <h2>Lorem ipsum</h2>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+                        <a class="btn btn-primary btn-lg" href="#">Lorem ipsum &raquo;</a>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h2>Lorem ipsums</h2>
+                        <hr>
+                        <address>
+                            <strong>Lorem ipsum</strong>
+                            <br>3481 Melrose Place
+                            <br>Beverly Hills, CA 90210
+                            <br>
+                        </address>
+                        <address>
+                            <abbr title="Phone">P:</abbr>
+                            (123) 456-7890
+                            <br>
+                            <abbr title="Email">E:</abbr>
+                            <a href="mailto:#">name@example.com</a>
+                        </address>
+                    </div>
+                </div><div class="container">
+
+                    <div class="row">
+                        <div class="col-md-8 mb-5">
+                            <h2>Lorem ipsum</h2>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+                            <a class="btn btn-primary btn-lg" href="#">Lorem ipsum &raquo;</a>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <h2>Lorem ipsums</h2>
+                            <hr>
+                            <address>
+                                <strong>Lorem ipsum</strong>
+                                <br>3481 Melrose Place
+                                <br>Beverly Hills, CA 90210
+                                <br>
+                            </address>
+                            <address>
+                                <abbr title="Phone">P:</abbr>
+                                (123) 456-7890
+                                <br>
+                                <abbr title="Email">E:</abbr>
+                                <a href="mailto:#">name@example.com</a>
+                            </address>
+                        </div>
+                    </div><div class="container">
+
+                        <div class="row">
+                            <div class="col-md-8 mb-5">
+                                <h2>Lorem ipsum</h2>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+                                <a class="btn btn-primary btn-lg" href="#">Lorem ipsum &raquo;</a>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <h2>Lorem ipsums</h2>
+                                <hr>
+                                <address>
+                                    <strong>Lorem ipsum</strong>
+                                    <br>3481 Melrose Place
+                                    <br>Beverly Hills, CA 90210
+                                    <br>
+                                </address>
+                                <address>
+                                    <abbr title="Phone">P:</abbr>
+                                    (123) 456-7890
+                                    <br>
+                                    <abbr title="Email">E:</abbr>
+                                    <a href="mailto:#">name@example.com</a>
+                                </address>
+                            </div>
+                        </div><div class="container">
+
+                            <div class="row">
+                                <div class="col-md-8 mb-5">
+                                    <h2>Lorem ipsum</h2>
+                                    <hr>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+                                    <a class="btn btn-primary btn-lg" href="#">Lorem ipsum &raquo;</a>
+                                </div>
+                                <div class="col-md-4 mb-5">
+                                    <h2>Lorem ipsums</h2>
+                                    <hr>
+                                    <address>
+                                        <strong>Lorem ipsum</strong>
+                                        <br>3481 Melrose Place
+                                        <br>Beverly Hills, CA 90210
+                                        <br>
+                                    </address>
+                                    <address>
+                                        <abbr title="Phone">P:</abbr>
+                                        (123) 456-7890
+                                        <br>
+                                        <abbr title="Email">E:</abbr>
+                                        <a href="mailto:#">name@example.com</a>
+                                    </address>
+                                </div>
+                            </div><div class="container">
+
+                                <div class="row">
+                                    <div class="col-md-8 mb-5">
+                                        <h2>Lorem ipsum</h2>
+                                        <hr>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+                                        <a class="btn btn-primary btn-lg" href="#">Lorem ipsum &raquo;</a>
+                                    </div>
+                                    <div class="col-md-4 mb-5">
+                                        <h2>Lorem ipsums</h2>
+                                        <hr>
+                                        <address>
+                                            <strong>Lorem ipsum</strong>
+                                            <br>3481 Melrose Place
+                                            <br>Beverly Hills, CA 90210
+                                            <br>
+                                        </address>
+                                        <address>
+                                            <abbr title="Phone">P:</abbr>
+                                            (123) 456-7890
+                                            <br>
+                                            <abbr title="Email">E:</abbr>
+                                            <a href="mailto:#">name@example.com</a>
+                                        </address>
+                                    </div>
+                                </div>
+
+        <script type="text/javascript">
+            var google_tag_params = {
+                ecomm_pagetype: 'home'
+            };
+        </script>
+
+
+    </div>
+
+    <div id="pointer-up" onclick="javascript:scrollup();" style="display:none;" class="pointer-up pointer hidden-xs">
+        <i style="color:#0182C5;" class="fa fa-arrow-up fa-2x"></i>
+    </div>
 
     <script>
-        var customLabel = {
-            restaurant: {
-                label: 'R'
-            },
-            bar: {
-                label: 'B'
-            }
-        };
-
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: new google.maps(G37V+G4),
-                zoom: 12
-            });
-            var infoWindow = new google.maps.InfoWindow;
-
-            // Change this depending on the name of your PHP or XML file
-            downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
-                var xml = data.responseXML;
-                var markers = xml.documentElement.getElementsByTagName('marker');
-                Array.prototype.forEach.call(markers, function(markerElem) {
-                    var id = markerElem.getAttribute('id');
-                    var name = markerElem.getAttribute('name');
-                    var address = markerElem.getAttribute('address');
-                    var type = markerElem.getAttribute('type');
-                    var point = new google.maps.LatLng(
-                        parseFloat(markerElem.getAttribute('lat')),
-                        parseFloat(markerElem.getAttribute('lng')));
-
-                    var infowincontent = document.createElement('div');
-                    var strong = document.createElement('strong');
-                    strong.textContent = name
-                    infowincontent.appendChild(strong);
-                    infowincontent.appendChild(document.createElement('br'));
-
-                    var text = document.createElement('text');
-                    text.textContent = address
-                    infowincontent.appendChild(text);
-                    var icon = customLabel[type] || {};
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: point,
-                        label: icon.label
-                    });
-                    marker.addListener('click', function() {
-                        infoWindow.setContent(infowincontent);
-                        infoWindow.open(map, marker);
-                    });
-                });
-            });
+        if (top.location != location) {
+            top.location.href = document.location.href ;
         }
+        var settings = {multilang: 0, language:'nl', 'cartpopupautoclose': 1, 'ga':true, 'myshopid': 250 };
+
+    </script>    <script>
+        var language = {};
+
+        language['shoppingcart'] = 'Winkelwagen';
+        language['continueshopping'] = 'Verder winkelen';
+        language['checkout'] = 'Afrekenen';
+        language['subtotal'] = 'Subtotaal';
+        language['discount'] = 'Korting';
+        language['totalincludevat'] = 'Totaal inclusief BTW';
+        language['totalexcludevat'] = 'Totaal exclusief BTW';
+        language['vat'] = 'BTW';
+        language['high'] = 'Hoog';
+        language['low'] = 'Laag';
+        language['miniumorderamount'] = 'Minimaal orderbedrag';
+        language['shippingcost'] = 'Verzendkosten';
+    </script>
+    <script src="/assets/min/js/core.min.js?v=12367"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,600italic,700,800" rel="stylesheet" type="text/css" />
+
+
+    <script src="/assets/js/mmenu/mmenu-min.js"></script>
+
+    <script>
+        $(function() {
+
+            $('.plus-green').tooltip();
+            $('.plus-blue').tooltip();
+
+            // affix menu bar
+            $('#nav').affix({
+                offset: {
+                    top: $('header.logo-header').height()
+                }
+            }).on('affix.bs.affix', function () {
+                $('body').addClass('affixed');
+                $('.fastsearch').hide();
+            }).on('affix-top.bs.affix', function () {
+                $('body').removeClass('affixed');
+            });
+
+            // unfocus search field
+            $(window).scroll(function(){
+                if($(this).scrollTop()>= 1){
+                    $('[name="q"]').blur();
+                }
+            });
+
+            // check if affix after reload
+            if($('.navigation-header').hasClass('affix')) {
+                $('body').addClass('affixed');
+            }
+
+            /**
+             * set menu position left|right based on window size
+             *
+             * @param  {object}  windowWidth
+             * @param  {integer} size
+             * @return {string}
+             */
+            function setMenuPosition(windowWidth, size = 767)
+            {
+                return (windowWidth <= size) ? 'position-left' : 'position-right';
+            }
+
+            // set default position for slide-in effect
+            var position = setMenuPosition($(window).width());
+
+            $("#menu").mmenu({
+                // navbars: [{
+                // 	content: [ 'searchfield' ]
+                // }],
+                "extensions": [
+                    position
+                ],
+                "pageScroll": true,
+                wrappers: [ 'bootstrap4' ]}, {
+            });
+            $(".mh-head.mm-sticky").mhead({
+                scroll: {
+                    hide: 200
+                }
+            });
+            $(".mh-head:not(.mm-sticky)").mhead({
+                scroll: false
+            });
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        (function () {
+            var _tsid = 'X4AD2E2011A53FFAC7C45BDB9CC4AD09F';
+            _tsConfig = {
+                'yOffset': '240', /* offset from page bottom */
+                'variant': 'reviews', /* default, reviews, custom, custom_reviews */
+                'customElementId': '', /* required for variants custom and custom_reviews */
+                'trustcardDirection': '', /* for custom variants: topRight, topLeft, bottomRight, bottomLeft */
+                'customBadgeWidth': '', /* for custom variants: 40 - 90 (in pixels) */
+                'customBadgeHeight': '', /* for custom variants: 40 - 90 (in pixels) */
+                'disableResponsive': 'true', /* deactivate responsive behaviour */
+                'disableTrustbadge': 'false' /* deactivate trustbadge */
+            };
+            var _ts = document.createElement('script');
+            _ts.type = 'text/javascript';
+            _ts.charset = 'utf-8';
+            _ts.async = true;
+            _ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js';
+            var __ts = document.getElementsByTagName('script')[0];
+            __ts.parentNode.insertBefore(_ts, __ts);
+        })();
+    </script>
 
 
 
-        function downloadUrl(url, callback) {
-            var request = window.ActiveXObject ?
-                new ActiveXObject('Microsoft.XMLHTTP') :
-                new XMLHttpRequest;
 
-            request.onreadystatechange = function() {
-                if (request.readyState == 4) {
-                    request.onreadystatechange = doNothing;
-                    callback(request, request.status);
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5d6f5ad1eb1a6b0be60ad777/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+
+    <script type="text/javascript">
+        /* <![CDATA[ */var google_conversion_id = 1036101089;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1036101089/?value=0&amp;guid=ON&amp;script=0"/>
+        </div>
+    </noscript>
+
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '486700805063573'); // Insert your pixel ID here.
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=486700805063573&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+
+    <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5666764"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=5666764&Ver=2" height="0" width="0" style="display:none; visibility: hidden;" /></noscript>
+
+
+
+    <script>
+
+        (function($){
+
+            /**
+             * Copyright 2012, Digital Fusion
+             * Licensed under the MIT license.
+             * http://teamdf.com/jquery-plugins/license/
+             *
+             * @author Sam Sehnert
+             * @desc A small plugin that checks whether elements are within
+             *       the user visible viewport of a web browser.
+             *       can accounts for vertical position, horizontal, or both
+             */
+            var $w=$(window);
+            $.fn.visible = function(partial,hidden,direction,container){
+
+                if (this.length < 1)
+                    return;
+
+                // Set direction default to 'both'.
+                direction = direction || 'both';
+
+                var $t          = this.length > 1 ? this.eq(0) : this,
+                    isContained = typeof container !== 'undefined' && container !== null,
+                    $c				  = isContained ? $(container) : $w,
+                    wPosition        = isContained ? $c.position() : 0,
+                    t           = $t.get(0),
+                    vpWidth     = $c.outerWidth(),
+                    vpHeight    = $c.outerHeight(),
+                    clientSize  = hidden === true ? t.offsetWidth * t.offsetHeight : true;
+
+                if (typeof t.getBoundingClientRect === 'function'){
+
+                    // Use this native browser method, if available.
+                    var rec = t.getBoundingClientRect(),
+                        tViz = isContained ?
+                            rec.top - wPosition.top >= 0 && rec.top < vpHeight + wPosition.top :
+                            rec.top >= 0 && rec.top < vpHeight,
+                        bViz = isContained ?
+                            rec.bottom - wPosition.top > 0 && rec.bottom <= vpHeight + wPosition.top :
+                            rec.bottom > 0 && rec.bottom <= vpHeight,
+                        lViz = isContained ?
+                            rec.left - wPosition.left >= 0 && rec.left < vpWidth + wPosition.left :
+                            rec.left >= 0 && rec.left <  vpWidth,
+                        rViz = isContained ?
+                            rec.right - wPosition.left > 0  && rec.right < vpWidth + wPosition.left  :
+                            rec.right > 0 && rec.right <= vpWidth,
+                        vVisible   = partial ? tViz || bViz : tViz && bViz,
+                        hVisible   = partial ? lViz || rViz : lViz && rViz,
+                        vVisible = (rec.top < 0 && rec.bottom > vpHeight) ? true : vVisible,
+                        hVisible = (rec.left < 0 && rec.right > vpWidth) ? true : hVisible;
+
+                    if(direction === 'both')
+                        return clientSize && vVisible && hVisible;
+                    else if(direction === 'vertical')
+                        return clientSize && vVisible;
+                    else if(direction === 'horizontal')
+                        return clientSize && hVisible;
+                } else {
+
+                    var viewTop 				= isContained ? 0 : wPosition,
+                        viewBottom      = viewTop + vpHeight,
+                        viewLeft        = $c.scrollLeft(),
+                        viewRight       = viewLeft + vpWidth,
+                        position          = $t.position(),
+                        _top            = position.top,
+                        _bottom         = _top + $t.height(),
+                        _left           = position.left,
+                        _right          = _left + $t.width(),
+                        compareTop      = partial === true ? _bottom : _top,
+                        compareBottom   = partial === true ? _top : _bottom,
+                        compareLeft     = partial === true ? _right : _left,
+                        compareRight    = partial === true ? _left : _right;
+
+                    if(direction === 'both')
+                        return !!clientSize && ((compareBottom <= viewBottom) && (compareTop >= viewTop)) && ((compareRight <= viewRight) && (compareLeft >= viewLeft));
+                    else if(direction === 'vertical')
+                        return !!clientSize && ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+                    else if(direction === 'horizontal')
+                        return !!clientSize && ((compareRight <= viewRight) && (compareLeft >= viewLeft));
                 }
             };
 
-            request.open('GET', url, true);
-            request.send(null);
+        })(jQuery);
+
+        function ApiGetData(uri, target) {
+
+            $.ajax({
+                url: '/api/v1/' + uri,
+                type: 'GET',
+                dataType: 'json',
+                cache:false,
+                data:{},
+                contentType: 'application/json; charset=utf-8',
+                success: function(data)
+                {
+                    if(data.data) {
+                        $('#' + target).html(data.data);
+                    }
+                    else {
+                        $('.' + target).hide();
+                    }
+                }
+            });
         }
 
-        function doNothing() {}
+        $(document).ready(function() {
+
+            $(window).scroll(function(){
+
+                if($('#popularproducts').visible() && $('#popularproducts').html().length == 0) {
+                    $('#popularproducts').html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>');
+                    ApiGetData('products/popular','popularproducts');
+                }
+                if($('#newproductsplaced').visible() && $('#newproductsplaced').html().length == 0) {
+                    $('#newproductsplaced').html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>');
+                    ApiGetData('products/newplaced','newproductsplaced');
+                }
+            });
+
+            if($('#popularproducts').visible() && $('#popularproducts').html().length == 0) {
+                ApiGetData('products/popular','popularproducts');
+            }
+            if($('#newproductsplaced').visible() && $('#newproductsplaced').html().length == 0) {
+                ApiGetData('products/newplaced','newproductsplaced');
+            }
+
+        });
     </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMkHJ8JOmKtDtxYBlzRmXDZg9XFs1um6U&callback=initMap">
+    <script type="text/javascript" src="/assets/js/jquery-image-slider-min.js"></script>
+    <script>
+        marqueeInit({
+            uniqueid: 'brands-slider',
+            inc: 10, //speed - pixel increment for each iteration of this marquee's movement
+            mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+            moveatleast: 2,
+            neutral: 150,
+            savedirection: true,
+            random:false
+        });
+
+
+    </script>
+
+    <div class="pull-right" style="font-size:10px;position:relative;right:5px;bottom:20px;"><i class="fa fa-wrench" aria-hidden="true"></i><a onclick="javascript:$('#cookie-bar').toggle();">Cookie instellingen</a></div><div id="cookie-bar" class="gdpr" style="display: none; bottom: 0px; opacity: 0.8;"><p>
+            Deze website maakt gebruik van cookies om het gebruik en functionaliteit te waarborgen van deze website.         <a href="/privacy-policy.htm" rel="nofollow" id="cookie-bar-prompt-button" data-alt="Privacy policy">Meer over ons privacy &amp; cookiebeleid</a></p><p><b>Cookies zijn eerder geaccepteerd.</b></p><a onclick="javascript:SetCookie('gdpr',1);" class="cookiebutton button-no">Weiger cookies</a></div><script>
+        function SetCookie(cookie, value) {
+            $.ajax({
+                type: 'GET',
+                url: '/cookie/set',
+                data: {set: cookie, value: value},
+                cache: true,
+                async:true,
+                success:function(data)
+                {
+                    $('.' + cookie).hide();
+                }
+            });
+        }
+    </script><style>
+        #cookie-bar {
+            font-size: 13px;
+            background: #2b2b2b;
+            font-family: Arial, Helvetica, sans-serif;
+            left: 0;
+            line-height: 1.5;
+            margin: 0;
+            padding: 3px 200px 3px 3px;
+            position: fixed;
+            width: 100%;
+            z-index: 9999;
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc45484d', endColorstr='#cc000000',GradientType=0 );
+        }
+
+        @media only screen and (max-device-width: 800px) {
+            #cookie-bar {
+                font-size: 12px;
+                padding: 3px 3px 3px 3px;
+            }
+        }
+
+        #cookie-bar p {
+            float: left;
+            margin: 4px 0px 0px 20px;
+            padding: 0;
+            color: #fff;
+            font-family: sans-serif;
+        }
+
+        #cookie-bar .cookiebutton {
+            border-bottom: 1px solid #222;
+            border-radius: 5px;
+            color: #fff !important;
+            cursor: pointer;
+            display: inline-block;
+            float: right;
+            line-height: 1;
+            margin-right: 20px;
+            margin-top: 2px;
+            padding: 5px 10px 6px;
+            position: relative;
+            text-decoration: none;
+            text-shadow: 0 -1px 1px #222;
+        }
+
+        #cookie-bar .button-yes {
+            background-color: #2db035;
+        }
+
+        #cookie-bar .button-no {
+            background-color: #ff5012;
+        }
+    </style>        <br><br>
+    <script>
+        $(".dropdown").hover(function(){
+            $(this).addClass("open");
+        }, function(){
+            $(this).removeClass("open");
+        });
+    </script>
+    <script>
+
+        var experiment = 2;
+
+        function tpsearch(id) {
+            if($('#' + id).val().length < 1) {
+                target = id.replace('search', 'result');
+                $('#' + target).hide();
+            }
+            else {
+                fastsearch(id, experiment);
+            }
+        }
+
+
+        function scrollup(){$("html, body").animate({scrollTop:"0px"},"slow")}$(".scrollto").on("click",function(t){var e=$($(this).attr("href")).offset().top;$("html, body").animate({scrollTop:e},"slow"),t.preventDefault()}),$(document).ready(function(){var t=0;$(".service-footer ul").each(function(){if(3!=t){var e=0,n=0;$(this).find("li").each(function(){e>=5&&($(this).addClass("hidden"),n=1),e++}),t++,n&&$(this).append('<li class="more" ><span>meer</span></li>')}}),$(".service-footer ul li.more").on("click",function(){var t=$(this).closest("ul");$(t).find("li").each(function(){$(this).hasClass("hidden")&&$(this).removeClass("hidden")}),$(t).find("li.more").remove()}),$(".product input[type=number]").on("click",function(t){t.preventDefault()})}),$("#eti").keyup(function(t){$("#eti").val().length>2&&$.ajax({type:"post",dataType:"json",data:{eti:$("#eti").val()},url:"/custom/eti",success:function(t){htmldata="<ul>",t.data?$.each(t.data,function(t,e){htmldata+="<li>",htmldata+='<a href="/picdb/media/250/'+e+'.pdf" target="_blank">',htmldata+="ETI "+e,htmldata+="</a>",htmldata+="</li>"}):htmldata+="<li>Geen resultaten gevonden</li>",htmldata+="</ul>",$("#etiresult").html(htmldata)}})}),$(function(){$(window).scroll(function(){$(document).height()<$(window).scrollTop()+screen.height?$("#pointer-down").fadeOut("slow"):$("#pointer-down").fadeIn("slow"),$(window).scrollTop()+$(window).height()>screen.height?$("#pointer-up").fadeIn("slow"):$("#pointer-up").fadeOut("slow")})});
     </script>
     </body>
     </html>

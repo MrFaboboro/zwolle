@@ -1,23 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="container">
 
-        <div class="row">
+
             <!-- Blog Entries Column -->
-            <div class="col-md-8">
+
                 <h1 class="my-4">Resultaat
                 </h1>
-                {% if ZwolleGegevens %}
+                <div class="row">
+                    {% if ZwolleGegevens %}
                     {% for ZwolleGegevens in ZwolleGegevens %}
-                        <div class="my-4">
-                            <div class="card-body">
-                                <h2 class="card-title"> {{ ZwolleGegevens.ORG }}</h2>
-                                <p class="card-text"> {{ ZwolleGegevens.Email1 }}</p>
-{#                                <a style="width: 100%;" href="{{ path('blogshow', {'slug' : blogs.slug}) }}"  class="btn btn-outline-primary">Lees Verder</a>#}
-{#                                #}{#                            <a  href="{{ path('blogshow', {'slug' : blogs.slug}) }}" class="btn btn-primary">Lees verder &rarr;</a>#}
-                            </div>
-                        </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <a href="#">
+                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/555x237" alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Project One</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                        <a class="btn btn-primary" href="#">View Project</a>
+                    </div>
+                </div>
+            <!-- /.row -->
+
+            <hr>
                     {% endfor %}
                 {% else %}
                     <p>Er zijn Geen Gegevens gevonden</p>
