@@ -8,9 +8,9 @@
             <div class="container">
                 <div class="card mb-4">
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <div class="card-body">
-                        <h1 class="card-title">{{ ZwolleGegevens.ORG}}</h1>
-                        <hr>
+                        <h1 class="card-header">{{ ZwolleGegevens.ORG}}</h1>
+                            <div class="card-body">
+
                         {% if ZwolleGegevens.DATA %}
                             <p class="card-text">Data: {{ ZwolleGegevens.DATA }}</p>
                         {% else %}
@@ -22,104 +22,87 @@
                         {% endif %}
 
                         {% if ZwolleGegevens.LOC == 1 %}
-                            <p class="card-text">Aantal Locaties: {{ ZwolleGegevens.LOC }}</p>
+                            <p class="card-text">Adres: {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }}, {{ ZwolleGegevens.PC }}</p>
                         {% else %}
-                            <p class="card-text">Er zijn geen locaties gevonden.</p>
+                            <p class="card-text">Locatie: Er zijn geen locatie gevonden.</p>
                         {% endif %}
-
-                        <p class="card-text">Adres: {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }}, {{ ZwolleGegevens.PC }}</p>
 
                         {% if ZwolleGegevens.WEB == 1 %}
-                            <p class="card-text">Aantal Websites: {{ ZwolleGegevens.WEB }}</p>
+                            <p class="card-text">Website: <a href="{{ ZwolleGegevens.Address }}" target="_blank">{{ ZwolleGegevens.Address }}</a></p>
                         {% else %}
-                            <p class="card-text">Website: Er zijn geen websites gevonden.</p>
+                            <p class="card-text">Website: Er is geen website gevonden.</p>
                         {% endif %}
 
-                        {% if ZwolleGegevens.address %}
-                        <p class="card-text">Website: <a href="{{ ZwolleGegevens.Address }}" target="_blank">{{ ZwolleGegevens.Address }}</a></p>
+                        {% if ZwolleGegevens.EMAIL == 1 %}
+                            <p class="card-text">E-Mailadres 1: <a href="mailto:{{ ZwolleGegevens.Email1 }}">{{ ZwolleGegevens.Email1 }}</a></p>
+                            {% if ZwolleGegevens.EmailAlt %}
+                            <p class="card-text">E-Mailadres 2: <a href="mailto:{{ ZwolleGegevens.EmailAlt }}">{{ ZwolleGegevens.EmailAlt }}</a></p>
+                            {% else %}
+                            {% endif %}
                         {% else %}
+                            <p class="card-text">E-Mailadres: Er is geen E-mailadres gevonden.</p>
                         {% endif %}
 
 
-                        {% if ZwolleGegevens.Email1 %}
-                        <p class="card-text">E-Mailadres 1: <a href="mailto:{{ ZwolleGegevens.Email1 }}">{{ ZwolleGegevens.Email1 }}</a></p>
+                        {% if ZwolleGegevens.PHONE == 1 %}
+                            <p class="card-text">Tel 1: <a href="tel:{{ ZwolleGegevens.Phone1 }}">{{ ZwolleGegevens.Phone1 }}</a></p>
+                            {% if ZwolleGegevens.PhoneAlt %}
+                                <p class="card-text">Tel 2: <a href="tel:{{ ZwolleGegevens.PhoneAlt }}">{{ ZwolleGegevens.PhoneAlt }}</a></p>
+                            {% else %}
+                            {% endif %}
                         {% else %}
+                            <p class="card-text">Tel: Er is geen telefoonnummer gevonden.</p>
                         {% endif %}
 
-                        {% if ZwolleGegevens.EmailAlt %}
-                        <p class="card-text">E-Mailadres 1: <a href="mailto:{{ ZwolleGegevens.EmailAlt }}">{{ ZwolleGegevens.EmailAlt }}</a></p>
+                        {% if ZwolleGegevens.GGPOS == 1 %}
+                            <p class="card-text">Google Maps Locatie: {{ ZwolleGegevens.Location }} </p>
                         {% else %}
+                            <p class="card-text">Google Maps Locatie: Er is geen locatie gevonden.</p>
                         {% endif %}
 
-                        {% if ZwolleGegevens.Phone1 %}
-                        <p class="card-text">Tel 1: <a href="tel:{{ ZwolleGegevens.Phone1 }}">{{ ZwolleGegevens.Phone1 }}</a></p>
+                        {% if ZwolleGegevens.GGRAT == 1 %}
+                            <p class="card-text">Google Rating: {{ ZwolleGegevens.Stars }}</p>
+                            <p class="card-text">Google Review: {{ ZwolleGegevens.RevNo }}</p>
                         {% else %}
+                            <p class="card-text">Google Rating: Er is geen rating gevonden.</p>
+                            <p class="card-text">Google Review: Er zijn geen reviews gevonden.</p>
                         {% endif %}
 
-                        {% if ZwolleGegevens.PhoneAlt %}
-                        <p class="card-text">Tel 2: <a href="tel:{{ ZwolleGegevens.PhoneAlt }}">{{ ZwolleGegevens.PhoneAlt }}</a></p>
+                        {% if ZwolleGegevens.GOOGLE == 1 %}
+                            <p class="card-text">Google Type: {{ ZwolleGegevens.Desc }}</p>
                         {% else %}
+                            <p class="card-text">Google Type: Er is geen google type gevonden.</p>
                         {% endif %}
 
-                        {% if ZwolleGegevens.Stars %}
-                        <p class="card-text">Google Rating: {{ ZwolleGegevens.Stars }}</p>
+                        {% if ZwolleGegevens.CLASS == 1 %}
+                            <p class="card-text">Type: {{ ZwolleGegevens.Desc1 }}</p>
                         {% else %}
+                            <p class="card-text">Type: Er is geen branch gevonden.</p>
                         {% endif %}
 
-                        {% if ZwolleGegevens.RevNo %}
-                        <p class="card-text">Google Review: {{ ZwolleGegevens.RevNo }}</p>
+
+                        {% if ZwolleGegevens.CAT == 1 %}
+                            <p class="card-text">branch: {{ ZwolleGegevens.Desc2 }}</p>
                         {% else %}
+                            <p class="card-text">branch: Er is geen type gevonden.</p>
                         {% endif %}
 
-                        {% if ZwolleGegevens.Desc %}
-                        <p class="card-text">Type: {{ ZwolleGegevens.Desc }}</p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Facebook %}
-                        <p class="card-text">Facebook: <a href="{{ ZwolleGegevens.Facebook }}" target="_blank">{{ ZwolleGegevens.Facebook }}</a></p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Twitter %}
-                        <p class="card-text">Twitter: <a href="{{ ZwolleGegevens.Twitter }}" target="_blank">{{ ZwolleGegevens.Twitter }}</a></p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Linkedin %}
-                        <p class="card-text">Linkedin: <a href="{{ ZwolleGegevens.Linkedin }}" target="_blank">{{ ZwolleGegevens.Linkedin }}</a></p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Pintrest %}
-                        <p class="card-text">Pintrest: <a href="{{ ZwolleGegevens.Pintrest }}" target="_blank">{{ ZwolleGegevens.Pintrest }}</a></p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Twitter %}
-                        <p class="card-text">Twitter: <a href="{{ ZwolleGegevens.Twitter }}" target="_blank">{{ ZwolleGegevens.Twitter }}</a></p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Instagram %}
-                        <p class="card-text">Instagram: <a href="{{ ZwolleGegevens.Instagram }}" target="_blank">{{ ZwolleGegevens.Instagram }}</a></p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Youtube %}
-                        <p class="card-text">Youtube: <a href="{{ ZwolleGegevens.Youtube }}" target="_blank">{{ ZwolleGegevens.Youtube }}</a></p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.Whatsapp %}
-                        <p class="card-text">Whatsapp: {{ ZwolleGegevens.Whatsapp }}</p>
-                        {% else %}
-                        {% endif %}
-
-                        {% if ZwolleGegevens.NO1 %}
+                        {% if ZwolleGegevens.KVK ==1 %}
                         <p class="card-text">KVK Nummer: {{ ZwolleGegevens.NO }}</p>
                         {% else %}
+                            <p class="card-text">KVK Nummer: Er is geen KVK nummer gevonden.</p>
                         {% endif %}
+                            </div>
+                        <h3 style="text-align: center;" class="card-header">Social Media</h3>
+                    <div style="text-align: center;" class="card-body">
+
+                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-youtube"><i class="fa fa-youtube"></i></a>
+
                     </div>
                 </div>
             </div>
