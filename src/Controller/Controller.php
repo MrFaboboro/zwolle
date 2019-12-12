@@ -55,7 +55,29 @@ class Controller extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/student/ajax")
+     */
+    public function ajaxAction(Request $request) {
+        $ZwolleGegevens = $this->getDoctrine()
+            ->getRepository(ZwolleGegevens::class)
+            ->findAll();
 
+        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+            $jsonData = array();
+            $idx = 0;
+            foreach($ZwolleGegevens as $ZwolleGegevens) {
+                $temp = array(
+                    'add1' => $ZwolleGegevens->getadd1(),
+                    'pc' => $ZwolleGegevens->getpc(),
+                );
+                $jsonData[$idx++] = $temp;
+            }
+            return new JsonResponse($jsonData);
+        } else {
+            return $this->render('student/ajax.html.twig');
+        }
+    }
 
     /**
      * @Route("/home/handleSearch", name="handleSearch")
