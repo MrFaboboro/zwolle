@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% if ZwolleGegevens %}
+    <div class="row">
+        {% for ZwolleGegevens in ZwolleGegevens %}
+            <div class="container">
+                <div class="card mb-4">
+                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <div class="card-body">
+                        <h1 class="card-title">{{ ZwolleGegevens.ORG}}</h1>
+                        <hr>
+                        {% if ZwolleGegevens.DATA %}
+                            <p class="card-text">Data: {{ ZwolleGegevens.DATA }}</p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.SOURCE %}
+                            <p class="card-text">Bron: {{ ZwolleGegevens.SOURCE }}</p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.LOC == 1 %}
+                            <p class="card-text">Aantal Locaties: {{ ZwolleGegevens.LOC }}</p>
+                        {% else %}
+                            <p class="card-text">Er zijn geen locaties gevonden.</p>
+                        {% endif %}
+
+                        <p class="card-text">Adres: {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }}, {{ ZwolleGegevens.PC }}</p>
+
+                        {% if ZwolleGegevens.WEB == 1 %}
+                            <p class="card-text">Aantal Websites: {{ ZwolleGegevens.WEB }}</p>
+                        {% else %}
+                            <p class="card-text">Website: Er zijn geen websites gevonden.</p>
+                        {% endif %}
+
+                        {% if ZwolleGegevens.address %}
+                        <p class="card-text">Website: <a href="{{ ZwolleGegevens.Address }}" target="_blank">{{ ZwolleGegevens.Address }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+
+                        {% if ZwolleGegevens.Email1 %}
+                        <p class="card-text">E-Mailadres 1: <a href="mailto:{{ ZwolleGegevens.Email1 }}">{{ ZwolleGegevens.Email1 }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.EmailAlt %}
+                        <p class="card-text">E-Mailadres 1: <a href="mailto:{{ ZwolleGegevens.EmailAlt }}">{{ ZwolleGegevens.EmailAlt }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Phone1 %}
+                        <p class="card-text">Tel 1: <a href="tel:{{ ZwolleGegevens.Phone1 }}">{{ ZwolleGegevens.Phone1 }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.PhoneAlt %}
+                        <p class="card-text">Tel 2: <a href="tel:{{ ZwolleGegevens.PhoneAlt }}">{{ ZwolleGegevens.PhoneAlt }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Stars %}
+                        <p class="card-text">Google Rating: {{ ZwolleGegevens.Stars }}</p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.RevNo %}
+                        <p class="card-text">Google Review: {{ ZwolleGegevens.RevNo }}</p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Desc %}
+                        <p class="card-text">Type: {{ ZwolleGegevens.Desc }}</p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Facebook %}
+                        <p class="card-text">Facebook: <a href="{{ ZwolleGegevens.Facebook }}" target="_blank">{{ ZwolleGegevens.Facebook }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Twitter %}
+                        <p class="card-text">Twitter: <a href="{{ ZwolleGegevens.Twitter }}" target="_blank">{{ ZwolleGegevens.Twitter }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Linkedin %}
+                        <p class="card-text">Linkedin: <a href="{{ ZwolleGegevens.Linkedin }}" target="_blank">{{ ZwolleGegevens.Linkedin }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Pintrest %}
+                        <p class="card-text">Pintrest: <a href="{{ ZwolleGegevens.Pintrest }}" target="_blank">{{ ZwolleGegevens.Pintrest }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Twitter %}
+                        <p class="card-text">Twitter: <a href="{{ ZwolleGegevens.Twitter }}" target="_blank">{{ ZwolleGegevens.Twitter }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Instagram %}
+                        <p class="card-text">Instagram: <a href="{{ ZwolleGegevens.Instagram }}" target="_blank">{{ ZwolleGegevens.Instagram }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Youtube %}
+                        <p class="card-text">Youtube: <a href="{{ ZwolleGegevens.Youtube }}" target="_blank">{{ ZwolleGegevens.Youtube }}</a></p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.Whatsapp %}
+                        <p class="card-text">Whatsapp: {{ ZwolleGegevens.Whatsapp }}</p>
+                        {% else %}
+                        {% endif %}
+
+                        {% if ZwolleGegevens.NO1 %}
+                        <p class="card-text">KVK Nummer: {{ ZwolleGegevens.NO }}</p>
+                        {% else %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}
