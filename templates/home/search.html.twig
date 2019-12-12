@@ -7,44 +7,44 @@
 {#            <div style="width: 750px;position: relative;"><iframe width="750" height="300" src="https://maps.google.com/maps?width=750&amp;height=300&amp;hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/nl/">gmapgen nl</a> & <a href="http://interexpo.nl/">PrefabWoningenPrijzenVergelijken (nl)</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />#}
 {#        {% endfor %}#}
 {#    {% endif %}#}
+
+
     <div class="container">
-
-
             <!-- Blog Entries Column -->
 
                 <h1 class="my-4">Resultaat
                 </h1>
-                <div class="row">
+
+
                     {% if ZwolleGegevens %}
                     {% for ZwolleGegevens in ZwolleGegevens %}
-                    <div class="row">
-                    <div class="col-md-6">
+                    <div class="row  border-bottom 5px;" style="margin-top: 15px;">
+                    <div class="col-md-7">
                         <a href="#">
-{#                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/555x237" alt="">#}
+{#                            <img class="img-fluid " src="http://placehold.it/555x237" alt="">#}
                             <div style="width: 750px;position: relative;"><iframe width="555" height="237" src="https://maps.google.com/maps?width=750&amp;height=300&amp;hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/nl/">gmapgen nl</a> & <a href="http://interexpo.nl/">PrefabWoningenPrijzenVergelijken (nl)</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
 
                         </a>
                     </div>
-                    <div class="col-md-6 font-weight-light">
+                    <div class="col-md-5 font-weight-light">
                         <h3>{{ ZwolleGegevens.ORG }}</h3>
                         <p>Adres: {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }}, {{ ZwolleGegevens.PC }} {{ ZwolleGegevens.CITY }}</p>
                         <p>Telefoonnummer: {{ ZwolleGegevens.Phone1 }}</p>
                         <p>Email: {{ ZwolleGegevens.Email1 }}</p>
                         <p>Website: {{ ZwolleGegevens.Address }}</p>
                         <a class="btn btn-outline-primary" href="#">Bekijk bedrijf</a>
-                        <hr>
+
+                    </div>
                     </div>
 
-                </div>
-            <!-- /.row -->
-
-
                     {% endfor %}
+                        </div>
+                        </div>
                 {% else %}
                     <p>Er zijn Geen Gegevens gevonden</p>
                 {% endif %}
-            </div>
 
-        </div>
-    </div>
+
+
+
 {% endblock %}

@@ -78,6 +78,7 @@ class Controller extends AbstractController
         if ($zoek) {
             $ZwolleGegevens = $zwolleGegevensRepository->finditemByName($zoek);
         }
+
         return $this->render('home/search.html.twig', [
             'form' => $form->createView(),
             'ZwolleGegevens' => $ZwolleGegevens
