@@ -1,39 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <header>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('assets/images/zwolle_1.jpg')">
-                <div class="dark-layer"></div>
-            </div>
-            <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('assets/images/zwolle_2.jpg')">
-                <div class="dark-layer"></div>
-            </div>
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('assets/images/zwolle_3.jpg')">
-                <div class="dark-layer"></div>
-            </div>
-                <div class="container">
-                    <div class="search">
-                        {{ form_start(form) }}
 
-                            <div class="inner-form">
-                                <div class="input-field first-wrap">
-                                    {{ form_row(form.Zoek) }}
-                                </div>
-                                <div class="input-field third-wrap">
-                                    <input type="submit" class="btn-search" type="button"></input>
-                                </div>
-                            </div>
-                        {{ form_end(form) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
     <br>
     <div class="container">
 
