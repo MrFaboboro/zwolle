@@ -20,8 +20,12 @@ class AdminController extends AbstractController
         $repoArticles = $em->getRepository(ZwolleGegevens::class);
         $zwollegegevens = $repoArticles->createQueryBuilder('a')->select('count(a.id)')->getQuery()->getSingleScalarResult();
 
+        $table = $this->getDoctrine()->getRepository(ZwolleGegevens::class)->findAll();
+
+
         return $this->render('admin/dashboard.html.twig', [
-            'zwollegegevens' => $zwollegegevens
+            'zwollegegevens' => $zwollegegevens,
+            'table' => $table
     ]);
     }
 }

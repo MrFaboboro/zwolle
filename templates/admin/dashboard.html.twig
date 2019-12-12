@@ -99,4 +99,63 @@
         </div>
 
     </div>
-{% endblock %}
+<br>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Bedrijven</div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                {% if table %}
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Naam</th>
+                            <th>Adres</th>
+                            <th>Postcode</th>
+                            <th>Stad</th>
+                            <th>Email</th>
+                            <th>Telefoonnummer</th>
+
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Naam</th>
+                            <th>Adres</th>
+                            <th>Postcode</th>
+                            <th>Stad</th>
+                            <th>Email</th>
+                            <th>Telefoonnummer</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for table in table %}
+                            <tr>
+                                <td>{{ table.id }}</td>
+                                <td>{{ table.ORG }}</td>
+                                <td>{{ table.ADD1 }} {{ table.ADD2 }} {{ table.ADD3 }} </td>
+                                <td>{{ table.PC }}</td>
+                                <td>{{ table.CITY }}</td>
+                                <td>{{ table.Email1 }}</td>
+                                <td>{{ table.Phone1 }}</td>
+                                {#                                    <td>#}
+                                {#                                        <a href="#" class="btn btn-success">Show</a>#}
+                                {#                                        <a href="#" class="btn btn-light">Edit</a>#}
+                                {#                                        <a href="#" class="btn btn-danger">Delete</a>#}
+                                {#                                    </td>#}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>Niks gevonden om weer te geven.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
