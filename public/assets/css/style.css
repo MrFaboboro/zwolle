@@ -247,3 +247,28 @@ footer p {
   background: #cb2027;
   color: white;
 }
+
+
+@media screen and (min-width: 1200px) {
+  .header-image {
+    padding: 0 10% 0 10%;
+  }
+  .search-text{
+    font-size: 60px;
+  }
+
+}
+@media (max-width: 900px) {
+  .header-image {
+    padding: 0;
+  }
+  .search-text{
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .search-text{
+    font-size: 10px;
+  }
+}
