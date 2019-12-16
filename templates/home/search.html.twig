@@ -7,7 +7,13 @@
 {#            <div style="width: 750px;position: relative;"><iframe width="750" height="300" src="https://maps.google.com/maps?width=750&amp;height=300&amp;hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/nl/">gmapgen nl</a> & <a href="http://interexpo.nl/">PrefabWoningenPrijzenVergelijken (nl)</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />#}
 {#        {% endfor %}#}
 {#    {% endif %}#}
-
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+    </style>
 
     <div class="container">
             <!-- Blog Entries Column -->
@@ -15,14 +21,40 @@
                 <h1 class="my-4">Resultaat
                 </h1>
 
+    <div id="map"></div>
+    <script>
+
+{#        // Initialize and add the map#}
+{#        function initMap() {#}
+{#            // The location of Uluru#}
+{#            var uluru = {city: Zwolle};#}
+
+{#            // The map, centered at Uluru#}
+
+{#            var map = new google.maps.Map(#}
+{#                document.getElementById('map'), {zoom: 4, center: uluru});#}
+{#            // The marker, positioned at Uluru#}
+{#            var marker = new google.maps.Marker({position: uluru, map: map});#}
+
+{#            {% endif %}#}
+{#        }#}
+    </script>
+    <script async defer
+{#            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMkHJ8JOmKtDtxYBlzRmXDZg9XFs1um6U&callback=initMap">#}
+    </script>
+                {% if ZwolleGegevens %}
+
+    <div style="width: 750px;position: relative;"><iframe width="555" height="237" src="https://maps.google.com/maps?width=750&amp;height=300{% for ZwolleGegevens in ZwolleGegevens %}&amp;  hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;{% endfor %}output=embed"         frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/nl/">gmapgen nl</a> & <a href="http://interexpo.nl/">PrefabWoningenPrijzenVergelijken (nl)</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
+    {% else %}
+        <p>Er zijn Geen Gegevens gevonden</p>
+    {% endif %}
 
                     {% if ZwolleGegevens %}
                     {% for ZwolleGegevens in ZwolleGegevens %}
                     <div class="row  border-bottom 5px;" style="margin-top: 15px;">
                     <div class="col-md-7">
                         <a href="#">
-{#                            <img class="img-fluid " src="http://placehold.it/555x237" alt="">#}
-                            <div style="width: 750px;position: relative;"><iframe width="555" height="237" src="https://maps.google.com/maps?width=750&amp;height=300&amp;hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/nl/">gmapgen nl</a> & <a href="http://interexpo.nl/">PrefabWoningenPrijzenVergelijken (nl)</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
+                            <img class="img-fluid " src="http://placehold.it/555x237" alt="">
 
                         </a>
                     </div>

@@ -1,0 +1,31 @@
+{% block title %}Registreren{% endblock %}
+<link href="css/sb-admin.css" rel="stylesheet">
+{% block body %}
+<body class="bg-dark">
+<div class="container">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <div class="container">
+            <div class="card card-register mx-auto mt-5">
+                <div class="card-header">Registreren</div>
+                <div class="card-body">
+                  {{ form_start(form) }}
+                    <input type="submit" class="btn btn-primary btn-block" value="Verzend">
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+{% endblock %}

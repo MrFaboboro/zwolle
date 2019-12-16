@@ -43,11 +43,7 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-list"></i>
                     </div>
-{#                    {% if nieuwsbrief %}#}
 
-{#                        <div class="mr-5">{{ nieuwsbrief }}  Aanmeldingen voor de nieuwsbrief#}
-{#                        </div>#}
-{#                    {% endif %}#}
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="{{ path('admin') }}">
                     <span class="float-left">View Details</span>
@@ -118,6 +114,7 @@
                             <th>Stad</th>
                             <th>Email</th>
                             <th>Telefoonnummer</th>
+                            <th>Bekijken</th>
 
                         </tr>
                         </thead>
@@ -130,6 +127,7 @@
                             <th>Stad</th>
                             <th>Email</th>
                             <th>Telefoonnummer</th>
+                            <th>Bekijken</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -142,11 +140,7 @@
                                 <td>{{ table.CITY }}</td>
                                 <td>{{ table.Email1 }}</td>
                                 <td>{{ table.Phone1 }}</td>
-                                {#                                    <td>#}
-                                {#                                        <a href="#" class="btn btn-success">Show</a>#}
-                                {#                                        <a href="#" class="btn btn-light">Edit</a>#}
-                                {#                                        <a href="#" class="btn btn-danger">Delete</a>#}
-                                {#                                    </td>#}
+                                <td style="text-align: center;">  <a href="adminbase.html.twig"><i class="fas fa-eye"></i> </a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

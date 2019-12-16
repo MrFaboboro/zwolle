@@ -22,7 +22,7 @@ public function load(ObjectManager $manager)
     $user = new User();
 
     $user->setPassword($this->passwordEncoder-> encodePassword($user, 'admin'));
-    $user->setEmail('superadmin@gmail.com');
+    $user->setEmail('admin123@gmail.com');
     $user->setUsername('Admin');
 
     $manager->persist($user);
