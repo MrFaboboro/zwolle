@@ -273,6 +273,14 @@ footer p {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .search form .inner-form .input-field.third-wrap{
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
 .google-maps{
   padding: 30px;
   width: 100%;
