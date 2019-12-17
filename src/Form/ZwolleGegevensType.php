@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\ZwolleGegevens;
+use phpDocumentor\Reflection\Type;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -59,7 +62,7 @@ class ZwolleGegevensType extends AbstractType
             ->add('postcodehead')
             ->add('cityhead')
             ->add('notes')
-
+            ->add('gebruikersid', HiddenType::class)
             ->add('Verzenden', SubmitType::class)
         ;
     }

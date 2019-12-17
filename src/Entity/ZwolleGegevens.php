@@ -349,6 +349,11 @@ class ZwolleGegevens
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $gebruikersid;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -906,14 +911,26 @@ class ZwolleGegevens
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getuser(): ?user
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setuser(?user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getGebruikersid(): ?string
+    {
+        return $this->gebruikersid;
+    }
+
+    public function setGebruikersid(?string $gebruikersid): self
+    {
+        $this->gebruikersid = $gebruikersid;
 
         return $this;
     }
