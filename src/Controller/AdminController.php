@@ -19,6 +19,11 @@ class AdminController extends AbstractController
      */
     public function index()
     {
+        if($this->getUser()->hasRole('ROLE_ADMIN'))
+            return $this->redirect($this->generateUrl('admin_area'));
+        elseif($this->getUser()->hasRole('ROLE_USER'))
+            return $this->redirect($this->generateUrl('client_area'));
+
         # alle database gegevens
         $em = $this->getDoctrine()->getManager();
         $repoArticles = $em->getRepository(ZwolleGegevens::class);
