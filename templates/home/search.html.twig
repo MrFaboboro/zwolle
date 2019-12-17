@@ -3,9 +3,8 @@
 {% block body %}
     <div class="container google-maps">
         <div class="row">
-            <div id="map" style="height: 500px; width: 100%;">
+            <div id="map" style="height: 500px; width: 100%; padding-bottom: 24px;">
             </div>
-{#                        <div style="width: 100%;position: relative;"><iframe width="100%" height="500px" src="https://maps.google.com/maps?width=100%&amp;height=500px&amp;hl=en&amp;q=zwolle%20centerum+(Project%20Zwolle)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/es/">gmapgen es</a> & <a href="https://dnatestafkomstvergelijken.nl/">dna test afkomst</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />#}
         </div>
     </div>
     <div class="container">
@@ -19,10 +18,7 @@
                     {% for ZwolleGegevens in ZwolleGegevens %}
                     <div class="row  border-bottom 5px;" style="margin-top: 15px;">
                         <div class="col-md-7">
-                            <a href="#">
-{#                                <img class="img-fluid " src="http://placehold.it/555x237" alt="">#}
-                                <img class="img-fluid " src="../../assets/images/testimage.png" alt="">
-                            </a>
+                            <img class="img-fluid " src="../../assets/images/testimage.png" alt="">
                         </div>
                         <div class="col-md-5 font-weight-light">
                             <h3>{{ ZwolleGegevens.ORG }}</h3>
@@ -32,7 +28,7 @@
                                 <p class="card-text">Locatie: Er zijn geen locatie gevonden.</p>
                             {% endif %}
                             {% if ZwolleGegevens.WEB == 1 %}
-                                <p class="card-text">Website: <a href="{{ ZwolleGegevens.Address }}" target="_blank">{{ ZwolleGegevens.Address }}</a></p>
+                                <p class="card-text">Website: <a href="http://www.{{ ZwolleGegevens.Address }}" target="_blank">http://www.{{ ZwolleGegevens.Address }}</a></p>
                             {% else %}
                                 <p class="card-text">Website: Er is geen website gevonden.</p>
                             {% endif %}
