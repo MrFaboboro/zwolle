@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Zwollebackuptest;
 use App\Entity\ZwolleGegevens;
+use App\Repository\ZwollebackuptestRepository;
 use App\Repository\ZwolleGegevensRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,9 +30,9 @@ class Controller extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function home(Request $request, ZwolleGegevensRepository $zwolleGegevensRepository)
+    public function home(Request $request, ZwollebackuptestRepository $zwollebackuptestrepository)
     {
-        $ZwolleGegevens = $this->getDoctrine()->getRepository(ZwolleGegevens::class)->findAll();
+        $ZwolleGegevens = $this->getDoctrine()->getRepository(Zwollebackuptest::class)->findAll();
 //
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
@@ -46,7 +48,7 @@ class Controller extends AbstractController
 
         $zoek = $request->request->get('form')['Zoek'];
         if ($zoek) {
-            $ZwolleGegevens = $zwolleGegevensRepository->finditemsByName($zoek);
+            $ZwolleGegevens = $zwollebackuptestrepository->finditemsByName($zoek);
         }
 
         return $this->render('home/homepage.html.twig', [
@@ -60,7 +62,7 @@ class Controller extends AbstractController
      */
     public function ajaxAction(Request $request) {
         $ZwolleGegevens = $this->getDoctrine()
-            ->getRepository(ZwolleGegevens::class)
+            ->getRepository(Zwollebackuptest::class)
             ->findAll();
 
         if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
@@ -82,7 +84,7 @@ class Controller extends AbstractController
     /**
      * @Route("/home/handleSearch", name="handleSearch")
      */
-    public function handleSearch(Request $request, ZwolleGegevensRepository $zwolleGegevensRepository)
+    public function handleSearch(Request $request, ZwollebackuptestRepository $zwollebackuptestrepository)
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
@@ -98,7 +100,7 @@ class Controller extends AbstractController
 
         $zoek = $request->request->get('form')['Zoek'];
         if ($zoek) {
-            $ZwolleGegevens = $zwolleGegevensRepository->finditemByName($zoek);
+            $ZwolleGegevens = $zwollebackuptestrepository->finditemByName($zoek);
         }
 
         return $this->render('home/search.html.twig', [

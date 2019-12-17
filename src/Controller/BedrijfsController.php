@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\ZwolleGegevens;
+use App\Entity\Zwollebackuptest;
 use App\Repository\ZwolleGegevensRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,7 +33,7 @@ class BedrijfsController extends AbstractController
         }
 
 
-        $ZwolleGegevens = $this->getDoctrine()->getRepository(ZwolleGegevens::class)->findBy([
+        $ZwolleGegevens = $this->getDoctrine()->getRepository(Zwollebackuptest::class)->findBy([
             'id' => $slug
         ]);
 
