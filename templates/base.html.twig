@@ -42,6 +42,14 @@
     <link rel="stylesheet" type="text/css" href="../../assets/css/style.css" />
     <link rel="stylesheet" type="text/css" href="../../assets/css/modern-business.css" />
 
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../../css/sb-admin.css" rel="stylesheet">
+
 {#    [if lt IE 9]#}
     <script src="../../public/assets/js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
 {#    [endif]#}
@@ -62,14 +70,30 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ path('home') }}">Home</a>
         </li>
+
+      </ul>
+      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+      <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+          <a class="nav-link" href="#">
               <p>Welkom, {{ app.user.username }}</p>
-            {% endif %}</a>
+            </a>
+        </li>
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{{ path('app_account') }}">Instellingen</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">Uitloggen</a>
+          </div>
         </li>
       </ul>
+      {% endif %}
     </div>
   </nav>
+  {% block search %}
   <header>
     <div id="carouselExampleIndicators" class="carousel slide header-image" data-ride="carousel" >
       <div class="carousel-inner" role="listbox">
@@ -87,6 +111,7 @@
         </div>
         <div class="container">
           <div class="search">
+
             {{ form_start(form) }}
 
             <div class="inner-form">
@@ -98,11 +123,13 @@
               </div>
             </div>
             {{ form_end(form) }}
+
           </div>
         </div>
       </div>
     </div>
   </header>
+  {% endblock %}
 {% endblock %}
 
 {% block body %}{% endblock %}

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -48,6 +50,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180)
      */
     private $Achternaam;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ZwolleGegevens", mappedBy="user")
+     */
+    private $zwolleGegevens;
+
+    public function __construct()
+    {
+        $this->zwolleGegevens = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +166,37 @@ class User implements UserInterface
     public function setAchternaam(string $Achternaam): self
     {
         $this->Achternaam = $Achternaam;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ZwolleGegevens[]
+     */
+    public function getZwolleGegevens(): Collection
+    {
+        return $this->zwolleGegevens;
+    }
+
+    public function addZwolleGegeven(ZwolleGegevens $zwolleGegeven): self
+    {
+        if (!$this->zwolleGegevens->contains($zwolleGegeven)) {
+            $this->zwolleGegevens[] = $zwolleGegeven;
+            $zwolleGegeven->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeZwolleGegeven(ZwolleGegevens $zwolleGegeven): self
+    {
+        if ($this->zwolleGegevens->contains($zwolleGegeven)) {
+            $this->zwolleGegevens->removeElement($zwolleGegeven);
+            // set the owning side to null (unless already changed)
+            if ($zwolleGegeven->getUser() === $this) {
+                $zwolleGegeven->setUser(null);
+            }
+        }
 
         return $this;
     }

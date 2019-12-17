@@ -186,7 +186,7 @@ class ZwolleGegevens
     /**
      * @var string
      *
-     * @ORM\Column(name="Desc", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="Beschrijving", type="text", length=65535, nullable=false)
      */
     private $desc;
 
@@ -200,28 +200,28 @@ class ZwolleGegevens
     /**
      * @var string
      *
-     * @ORM\Column(name="Desc1", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="beschrijving1", type="text", length=65535, nullable=false)
      */
     private $desc1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CAT", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="Categorie", type="text", length=65535, nullable=false)
      */
     private $cat;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Desc2", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="Beschrijving2", type="text", length=65535, nullable=false)
      */
     private $desc2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Social", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="Socialmedia", type="text", length=65535, nullable=false)
      */
     private $social;
 
@@ -343,6 +343,11 @@ class ZwolleGegevens
      * @ORM\Column(name="NOTES", type="text", length=65535, nullable=false)
      */
     private $notes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="zwolleGegevens")
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -897,6 +902,18 @@ class ZwolleGegevens
     public function setNotes(string $notes): self
     {
         $this->notes = $notes;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
