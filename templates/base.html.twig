@@ -101,6 +101,11 @@
             <p>Inloggen</p>
           </a>
         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_login') }}">
+              <p>Registreren</p>
+            </a>
+          </li>
 
 
       {% endif %}
@@ -161,6 +166,23 @@
       </div>
 {#    </div>#}
   </footer>
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Zeker weten?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Wilt u zeker weten uitloggen?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuleer</button>
+          <a class="btn btn-primary"  href="/logout">Uitloggen</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block script %}
