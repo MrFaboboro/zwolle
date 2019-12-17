@@ -47,39 +47,108 @@
                     </div>
                     </div>
                 {% endif %}
+{#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMkHJ8JOmKtDtxYBlzRmXDZg9XFs1um6U&callback=initMap"></script>#}
+{#    <script type="text/javascript">#}
+
+{#        var locations = [#}
+{#            ['Jisk Lieftink Pianist',],#}
+{#            ['Coogee Beach', -33.923036, 151.259052, 4],#}
+{#            ['Cronulla Beach', -34.028249, 151.157507, 3],#}
+{#            ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],#}
+{#            ['Maroubra Beach', -33.950198, 151.259302, 1]#}
+{#        ];#}
+
+{#        var map = new google.maps.Map(document.getElementById('map'), {#}
+{#            zoom: 16,#}
+{#            center: new google.maps.LatLng(52.5120114, 6.0950112),#}
+{#            mapTypeId: google.maps.MapTypeId.ROADMAP#}
+{#        });#}
+
+{#        var infowindow = new google.maps.InfoWindow();#}
+
+{#        var marker, i;#}
+
+{#        for (i = 0; i < locations.length; i++) {#}
+{#            marker = new google.maps.Marker({#}
+{#                position: new google.maps.LatLng(locations[i][1], locations[i][2]),#}
+{#                map: map#}
+{#            });#}
+
+{#            google.maps.event.addListener(marker, 'click', (function(marker, i) {#}
+{#                return function() {#}
+{#                    infowindow.setContent(locations[i][0]);#}
+{#                    infowindow.open(map, marker);#}
+{#                }#}
+{#            })(marker, i));#}
+{#        }#}
+{#    </script>#}
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMkHJ8JOmKtDtxYBlzRmXDZg9XFs1um6U&callback=initMap"></script>
     <script type="text/javascript">
-
-        var locations = [
-            ['Jisk Lieftink Pianist',],
-            ['Coogee Beach', -33.923036, 151.259052, 4],
-            ['Cronulla Beach', -34.028249, 151.157507, 3],
-            ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-            ['Maroubra Beach', -33.950198, 151.259302, 1]
-        ];
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: new google.maps.LatLng(52.5120114, 6.0950112),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
+        var delay = 1;
         var infowindow = new google.maps.InfoWindow();
+        var latlng = new google.maps.LatLng(52.5120114, 6.0950112);
+        var mapOptions = {
+            zoom: 16,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var geocoder = new google.maps.Geocoder();
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var bounds = new google.maps.LatLngBounds();
 
-        var marker, i;
-
-        for (i = 0; i < locations.length; i++) {
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                map: map
+        function geocodeAddress(address, next) {
+            geocoder.geocode({address:address}, function (results,status)
+                {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        var p = results[0].geometry.location;
+                        var lat=p.lat();
+                        var lng=p.lng();
+                        createMarker(address,lat,lng);
+                    }
+                    else {
+                        if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                            nextAddress--;
+                            delay++;
+                        } else {
+                        }
+                    }
+                    next();
+                }
+            );
+        }
+        function createMarker(add,lat,lng) {
+            var contentString = add;
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat,lng),
+                map: map,
             });
 
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                    infowindow.setContent(locations[i][0]);
-                    infowindow.open(map, marker);
-                }
-            })(marker, i));
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(contentString);
+                infowindow.open(map,marker);
+            });
+
+            bounds.extend(marker.position);
+
         }
+        var locations = [
+            {% if ZwolleGegevens %}
+            {% for ZwolleGegevens in ZwolleGegevens %}
+            '{{ ZwolleGegevens.ORG }} {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}, {{ ZwolleGegevens.PC }} {{ ZwolleGegevens.CITY }}',
+            {% endfor %}
+            {% endif %}
+        ];
+        var nextAddress = 0;
+        function theNext() {
+            if (nextAddress < locations.length) {
+                setTimeout('geocodeAddress("'+locations[nextAddress]+'",theNext)', delay);
+                nextAddress++;
+            } else {
+                map.fitBounds(bounds);
+            }
+        }
+        theNext();
+
     </script>
 {% endblock %}
