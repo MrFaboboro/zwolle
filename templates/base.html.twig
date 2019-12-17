@@ -72,11 +72,8 @@
       </ul>
       <ul class="nav navbar-nav ml-auto">
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_login') }}">
-            <p>Inloggen</p>
-          </a>
-      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
         <li class="nav-item">
           <a class="nav-link" href="#">
@@ -90,10 +87,22 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="{{ path('app_account') }}">Instellingen</a>
             <div class="dropdown-divider"></div>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item" href="{{ path('admin') }}">Admin</a>
+            <div class="dropdown-divider"></div>
+            {% endif %}
             <a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">Uitloggen</a>
           </div>
         </li>
       </ul>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_login') }}">
+            <p>Inloggen</p>
+          </a>
+        </li>
+
+
       {% endif %}
     </div>
   </nav>
