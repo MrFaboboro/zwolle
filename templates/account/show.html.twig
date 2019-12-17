@@ -24,207 +24,133 @@
 {% endblock %}
 
 {% block body %}
+    {% if ZwolleGegevens %}
+        <div style="padding-top: 40px;" class="row">
+        {% for ZwolleGegevens in ZwolleGegevens %}
+            <div class="container">
+                <div class="card mb-4" >
+                    <div style="width: 100%;position: relative;"><iframe width="100%" height="300px" src="https://maps.google.com/maps?width=100%&amp;height=300&amp;hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
+                </div>
+                <h1 class="card-header">{{ ZwolleGegevens.ORG}}</h1>
+                <div class="card-body">
 
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-    <form>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-            </div>
-        </div>
-    </form>
+                    {% if ZwolleGegevens.DATA %}
+                        <p class="card-text">Data: {{ ZwolleGegevens.DATA }}</p>
+                    {% else %}
+                    {% endif %}
+
+                    {% if ZwolleGegevens.SOURCE %}
+                        <p class="card-text">Bron: {{ ZwolleGegevens.SOURCE }}</p>
+                    {% else %}
+                    {% endif %}
+
+                    {% if ZwolleGegevens.LOC == 1 %}
+                        <p class="card-text">Adres: {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }}, {{ ZwolleGegevens.PC }}</p>
+                    {% else %}
+                        <p class="card-text">Locatie: Er zijn geen locatie gevonden.</p>
+                    {% endif %}
+
+                    {% if ZwolleGegevens.WEB == 1 %}
+                        <p class="card-text">Website: <a href="{{ ZwolleGegevens.Address }}" target="_blank">{{ ZwolleGegevens.Address }}</a></p>
+                    {% else %}
+                        <p class="card-text">Website: Er is geen website gevonden.</p>
+                    {% endif %}
+
+                    {% if ZwolleGegevens.EMAIL == 1 %}
+                        <p class="card-text">E-Mailadres 1: <a href="mailto:{{ ZwolleGegevens.Email1 }}">{{ ZwolleGegevens.Email1 }}</a></p>
+                        {% if ZwolleGegevens.EmailAlt %}
+                            <p class="card-text">E-Mailadres 2: <a href="mailto:{{ ZwolleGegevens.EmailAlt }}">{{ ZwolleGegevens.EmailAlt }}</a></p>
+                        {% else %}
+                        {% endif %}
+                    {% else %}
+                        <p class="card-text">E-Mailadres: Er is geen E-mailadres gevonden.</p>
+                    {% endif %}
+
+
+                    {% if ZwolleGegevens.PHONE == 1 %}
+                        <p class="card-text">Tel 1: <a href="tel:{{ ZwolleGegevens.Phone1 }}">{{ ZwolleGegevens.Phone1 }}</a></p>
+                        {% if ZwolleGegevens.PhoneAlt %}
+                            <p class="card-text">Tel 2: <a href="tel:{{ ZwolleGegevens.PhoneAlt }}">{{ ZwolleGegevens.PhoneAlt }}</a></p>
+                        {% else %}
+                        {% endif %}
+                    {% else %}
+                        <p class="card-text">Tel: Er is geen telefoonnummer gevonden.</p>
+                    {% endif %}
+
+                    {% if ZwolleGegevens.GGPOS == 1 %}
+                        <p class="card-text">Google Maps Locatie: {{ ZwolleGegevens.Location }} </p>
+                    {% else %}
+                        <p class="card-text">Google Maps Locatie: Er is geen locatie gevonden.</p>
+                    {% endif %}
+
+                    {% if ZwolleGegevens.GGRAT == 1 %}
+                        <p class="card-text">Google Rating: {{ ZwolleGegevens.Stars }}</p>
+                        <p class="card-text">Google Review: {{ ZwolleGegevens.RevNo }}</p>
+                    {% else %}
+                        <p class="card-text">Google Rating: Er is geen rating gevonden.</p>
+                        <p class="card-text">Google Review: Er zijn geen reviews gevonden.</p>
+                    {% endif %}
+
+                    {% if ZwolleGegevens.GOOGLE == 1 %}
+                        <p class="card-text">Google Type: {{ ZwolleGegevens.Desc }}</p>
+                    {% else %}
+                        <p class="card-text">Google Type: Er is geen google type gevonden.</p>
+                    {% endif %}
+
+                    {% if ZwolleGegevens.CLASS == 1 %}
+                        <p class="card-text">Type: {{ ZwolleGegevens.Desc1 }}</p>
+                    {% else %}
+                        <p class="card-text">Type: Er is geen branch gevonden.</p>
+                    {% endif %}
+
+
+                    {% if ZwolleGegevens.CAT == 1 %}
+                        <p class="card-text">branch: {{ ZwolleGegevens.Desc2 }}</p>
+                    {% else %}
+                        <p class="card-text">branch: Er is geen type gevonden.</p>
+                    {% endif %}
+
+                    {% if ZwolleGegevens.KVK ==1 %}
+                        <p class="card-text">KVK Nummer: {{ ZwolleGegevens.NO }}</p>
+                    {% else %}
+                        <p class="card-text">KVK Nummer: Er is geen KVK nummer gevonden.</p>
+                    {% endif %}
+                </div>
+                <div style="text-align: center;" class="card-body">
+                    {% if ZwolleGegevens.Facebook %}
+                        <a href="{{ ZwolleGegevens.Facebook }}" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+                    {% else %}
+                    {% endif %}
+
+                    {% if ZwolleGegevens.Twitter %}
+                        <a href="{{ ZwolleGegevens.Twitter }}" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+                    {% else %}
+                    {% endif %}
+
+                    {% if ZwolleGegevens.Linkedin %}
+                        <a href="{{ ZwolleGegevens.Linkedin }}" target="_blank" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                    {% else %}
+                    {% endif %}
+
+                    {% if ZwolleGegevens.Pintrest %}
+                        <a href="{{ ZwolleGegevens.Pintrest }}" target="_blank" class="btn-social btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                    {% else %}
+                    {% endif %}
+
+                    {% if ZwolleGegevens.Instagram %}
+                        <a href="{{ ZwolleGegevens.Instagram }}" target="_blank" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+                    {% else %}
+                    {% endif %}
+
+                    {% if ZwolleGegevens.Youtube %}
+                        <a href="{{ ZwolleGegevens.Youtube }}" target="_blank" class="btn-social btn-youtube"><i class="fa fa-youtube"></i></a>
+                    {% else %}
+                    {% endif %}
+
                 </div>
             </div>
+            </div>
+        {% endfor %}
         </div>
-    </section>
+    {% endif %}
 {% endblock %}

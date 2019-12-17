@@ -46,8 +46,16 @@ class AccountController extends AbstractController
     /**
      * @Route("/show", name="app_show")
      */
-    public function show()
+    public function show(UserInterface $user)
     {
-        return $this->render('account/show.html.twig');
+        $userId = $user->getId();
+        $ZwolleGegevens = $this->getDoctrine()->getRepository(ZwolleGegevens::class)->
+        findBy(
+            array('gebruikersid' => $userId),
+            array('id'=>'DESC')
+        );
+        return $this->render('account/show.html.twig', [
+            'ZwolleGegevens' => $ZwolleGegevens
+        ]);
     }
 }
