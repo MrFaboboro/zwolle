@@ -22,10 +22,10 @@ public function load(ObjectManager $manager)
     $user = new User();
 
     $user->setPassword($this->passwordEncoder-> encodePassword($user, 'admin'));
-    $user->setEmail('jesse@gmail.com');
-    $user->setUsername('Jesse');
-    $user->setVoornaam('Jesse');
-    $user->setAchternaam('Jesse');
+    $user->setEmail('gernand.sr@live.nl');
+    $user->setUsername('Gernand');
+    $user->setVoornaam('Gernand');
+    $user->setAchternaam('Steen Redeker');
     $user->setRoles(['ROLE_ADMIN']);
 
 
