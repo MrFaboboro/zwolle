@@ -1,7 +1,9 @@
 {% block title %}Registreren{% endblock %}
 <link href="css/sb-admin.css" rel="stylesheet">
 {% block body %}
-<body class="bg-dark">
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+    <body class="bg-dark">
 <div class="container">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -13,13 +15,22 @@
             </div>
         {% endif %}
 
-        <div class="container">
-            <div class="card card-register mx-auto mt-5">
-                <div class="card-header">Registreren</div>
-                <div class="card-body">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">
+            <h1 class="h3 mb-3 font-weight-normal">Registreren</h1>
+        </div>
+                <div class="card-body" style="text-align: center;">
                   {{ form_start(form) }}
-                    <input type="submit" class="btn btn-primary btn-block" value="Verzend">
-
+                    {{ form_row(form.Voornaam) }}
+                    {{ form_row(form.Achternaam) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.Username) }}
+                    {{ form_row(form.password   ) }}
+                    <input type="submit" class="btn btn-primary btn-block" value="Registreren">
+                    <br>
+                    <div class="text-center">
+                        <a class="d-block small" href="{{path('app_login')}}">Inloggen</a>
+                    </div>
                     {{ form_end(form) }}
                 </div>
             </div>
