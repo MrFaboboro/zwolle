@@ -301,3 +301,11 @@ footer p {
 .img-fluid{
   padding: 20px 0 30px 0;
 }
+
+.bedrijfs-title{
+  color: #009de0;
+}
+
+.bedrijfs-button{
+  width: 100%;
+}
