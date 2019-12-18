@@ -32,7 +32,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="../../assets/images/icons/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/icons/favicon-16x16.png" />
     <link rel="manifest" href="../../assets/images/icons/manifest.json" />
-    <link rel="shortcut icon" href="https://www.zwolle.nl/sites/all/themes/custom/zwolle/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="shortcut icon" href="http://citycentrum-zwolle.nl/wp-content/uploads/2018/10/fav-ccz.png" type="image/png" />
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -92,12 +92,12 @@
       </ul>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_login') }}">
+          <a class="nav-link" style="margin-top: 20px;" href="{{ path('app_login') }}">
             <p>Inloggen</p>
           </a>
         </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_register') }}">
+            <a class="nav-link" style="margin-top: 20px;" href="{{ path('app_register') }}">
               <p>Registreren</p>
             </a>
           </li>
@@ -178,6 +178,29 @@
       </div>
     </div>
   </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><b>Top</b></button>
+
+  <script>
+  //Get the button:
+  mybutton = document.getElementById("myBtn");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  mybutton.style.display = "block";
+  } else {
+  mybutton.style.display = "none";
+  }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+  </script>
 {% endblock %}
 
 {% block script %}

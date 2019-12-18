@@ -40,6 +40,7 @@ class BedrijfsController extends AbstractController
         return $this->render('home/bedrijsinformatie.html.twig',[
             'form' => $form->createView(),
             'ZwolleGegevens' => $ZwolleGegevens
+
         ]);
     }
 }
