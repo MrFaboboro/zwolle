@@ -58,10 +58,6 @@ class User implements UserInterface
      */
     private $zwolleGegevens;
 
-    /**
-     * @ORM\Column(type="string", unique=true, nullable=t
-     */
-    private $apitoken;
 
     public function __construct()
     {
@@ -208,15 +204,4 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getApitoken(): ?string
-    {
-        return $this->apitoken;
-    }
-
-    public function setApitoken(?string $apitoken): self
-    {
-        $this->apitoken = $apitoken;
-
-        return $this;
-    }
 }
