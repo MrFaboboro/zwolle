@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
+
   {% block navbar %}
+
       <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
           <a class="navbar-brand" href="{{ path('home') }}">
-              <img src="../../assets/images/logo.png" >
+              <img src="../../assets/images/logozwolle.png" >
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -15,26 +17,25 @@
 
               </ul>
 
-              <ul style="margin-top: 22px;" class="nav navbar-nav ml-auto">
+              <div class="form-inline">
+                  {{ form_start(form) }}
+                  <div class="form-control mr-sm-2">
 
-              </ul>
+                      {{ form_row(form.Zoek) }}
+                  </div>
+                  <input type="submit" class="btn btn-outline-primary my-2 my-sm-0" type="button" />
+
+              </div>
+              {{ form_end(form) }}
+
 
               <ul class="nav navbar-nav ml-auto">
-                  <li>
-                      {{ form_start(form) }}
-                      <div class="inner-form">
-                          <div class="input-field first-wrap search-text" style="margin-top: 22px;">
-                              {{ form_row(form.Zoek) }}
-                          </div>
-                      </div>
-                  </li>
-                  <li>
-                      <div class="input-field third-wrap verzend-btn" style="margin-top: 22px;">
-{#                          <input type="submit" class="btn-search btn-primary " type="button" />#}
-                          <button type="submit" class="btn btn-primary btn-search">Verzenden</button>
-                      </div>
-                  </li>
-                  {{ form_end(form) }}
+
+
+                  <ul class="navbar-nav ml-auto mx-auto">
+
+                  </ul>
+
                   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
                   <li class="nav-item">
@@ -117,6 +118,16 @@
             {% else %}
                 <p>Er zijn geen reaultaaten gevonden.</p>
         {% endif %}
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" style="height: 45px;">
+                            <div class="input-group">
+                                <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+            </div>
         </div>
     </div>
 
