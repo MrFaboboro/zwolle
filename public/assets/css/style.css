@@ -333,3 +333,9 @@ footer p {
 #gotoTop:hover {
   background-color: #343a40;
 }
+
+.street-view {
+  width: 100%;
+  height: 300px;
+  border: none;
+}
