@@ -54,7 +54,6 @@
 {#    [if lt IE 9]#}
     <script src="../../public/assets/js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
 {#    [endif]#}
-
   </head>
 {% endblock %}
 
@@ -181,32 +180,31 @@
       </div>
     </div>
   </div>
-  <button onclick="topFunction()" id="myBtn" title="Go to top"><b>Top</b></button>
-
-  <script>
-  //Get the button:
-  mybutton = document.getElementById("myBtn");
-
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function() {scrollFunction()};
-
-  function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-  mybutton.style.display = "block";
-  } else {
-  mybutton.style.display = "none";
-  }
-  }
-
-  // When the user clicks on the button, scroll to the top of the document
-  function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  }
-  </script>
+    <!-- Scroll to Top Button-->
+  <button onclick="topFunction()" id="gotoTop" title="Go to top"><img src="../../assets/images/pijl1.png" /></button>
 {% endblock %}
 
 {% block script %}
+  <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("gotoTop").style.display = "block";
+      } else {
+        document.getElementById("gotoTop").style.display = "none";
+      }
+
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+
+      $('html, body').animate({scrollTop:0}, 'slow');
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="assets/js/vendor/jquery.min.js"></script>
   <script src="assets/js/vendor/fontawesome.min.js"></script>
   <script src="assets/js/vendor/bootstrap.min.js"></script>
