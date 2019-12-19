@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class BedrijfsController extends AbstractController
 {
@@ -23,7 +25,7 @@ class BedrijfsController extends AbstractController
                 'label' => false,
                 'attr' => array('placeholder' => 'Zoek naar bedrijven, branches, postcodes, straatnamen etc...' )
             ])
-//            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
+            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
             ->getForm()
         ;
 

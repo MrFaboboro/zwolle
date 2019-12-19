@@ -19,11 +19,9 @@
 
               <div class="form-inline">
                   {{ form_start(form) }}
-                  <div class="form-control mr-sm-2">
 
-                      {{ form_row(form.Zoek) }}
-                  </div>
-                  <input type="submit" class="btn btn-outline-primary my-2 my-sm-0" type="button" />
+                      {{ form_row(form.Zoek, {label_attr: {class: 'form-control mr-sm-2'} }) }}
+
 
               </div>
               {{ form_end(form) }}
@@ -119,16 +117,7 @@
                 <p>Er zijn geen reaultaaten gevonden.</p>
         {% endif %}
         </div>
-        <div class="row mb-5">
-            <div class="col-lg-8 mx-auto">
-                        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4" style="height: 45px;">
-                            <div class="input-group">
-                                <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
-                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-            </div>
-        </div>
+
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMkHJ8JOmKtDtxYBlzRmXDZg9XFs1um6U&callback=initMap"></script>

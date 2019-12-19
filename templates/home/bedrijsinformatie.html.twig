@@ -2,7 +2,7 @@
  {% block navbar %}
      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
          <a class="navbar-brand" href="{{ path('home') }}">
-             <img src="../../assets/images/logo.png" >
+             <img src="../../assets/images/logozwolle.png" >
          </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
@@ -15,26 +15,23 @@
 
              </ul>
 
-             <ul style="margin-top: 22px;" class="nav navbar-nav ml-auto">
+             <div class="form-inline">
+                 {{ form_start(form) }}
 
-             </ul>
+                 {{ form_row(form.Zoek, {label_attr: {class: 'form-control mr-sm-2'} }) }}
+
+
+             </div>
+             {{ form_end(form) }}
+
 
              <ul class="nav navbar-nav ml-auto">
-                 <li>
-                     {{ form_start(form) }}
-                     <div class="inner-form">
-                         <div class="input-field first-wrap search-text" style="margin-top: 22px;">
-                             {{ form_row(form.Zoek) }}
-                         </div>
-                     </div>
-                 </li>
-                 <li>
-                     <div class="input-field third-wrap verzend-btn" style="margin-top: 22px;">
-                         {#                          <input type="submit" class="btn-search btn-primary " type="button" />#}
-                         <button type="submit" class="btn btn-primary btn-search">Verzenden</button>
-                     </div>
-                 </li>
-                 {{ form_end(form) }}
+
+
+                 <ul class="navbar-nav ml-auto mx-auto">
+
+                 </ul>
+
                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
                  <li class="nav-item">
@@ -57,17 +54,17 @@
                      </div>
                  </li>
              </ul>
-             {% else %}
-                 <li class="nav-item">
-                     <a class="nav-link"  style="margin-top: 20px;" href="{{ path('app_login') }}">
-                         <p>Inloggen</p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link"  style="margin-top: 20px;" href="{{ path('app_register') }}">
-                         <p>Registreren</p>
-                     </a>
-                 </li>
+         {% else %}
+             <li class="nav-item">
+                 <a class="nav-link"  style="margin-top: 20px;" href="{{ path('app_login') }}">
+                     <p>Inloggen</p>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" style="margin-top: 20px;" href="{{ path('app_register') }}">
+                     <p>Registreren</p>
+                 </a>
+             </li>
 
 
              {% endif %}
