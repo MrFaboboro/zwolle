@@ -1,0 +1,75 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+    <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin') }}">Dashboard</a>
+        </li>
+    </ol>
+    <div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Nieuwe aanmeldingen</div>
+    <div class="card-body">
+        <div class="table-responsive">
+
+            {% if zwollegegevens %}
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Naam</th>
+                        <th>Adres</th>
+                        <th>Postcode</th>
+                        <th>Stad</th>
+                        <th>Email</th>
+                        <th>Telefoonnummer</th>
+                        <th>Bekijken</th>
+
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Naam</th>
+                        <th>Adres</th>
+                        <th>Postcode</th>
+                        <th>Stad</th>
+                        <th>Email</th>
+                        <th>Telefoonnummer</th>
+                        <th>Bekijken</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                {% for zwollegegevens in zwollegegevens %}
+
+                        {% if zwollegegevens.gechecked == null %}
+                        <tr>
+                            <td>{{ zwollegegevens.id }}</td>
+                            <td>{{ zwollegegevens.ORG }}</td>
+                            <td>{{ zwollegegevens.ADD1 }} {{ zwollegegevens.ADD2 }} {{ zwollegegevens.ADD3 }} </td>
+                            <td>{{ zwollegegevens.PC }}</td>
+                            <td>{{ zwollegegevens.CITY }}</td>
+                            <td>{{ zwollegegevens.Email1 }}</td>
+                            <td>{{ zwollegegevens.Phone1 }}</td>
+                            <td style="text-align: center;">  <a href="{{ path('show_aanmelding', {'slug' : zwollegegevens.id}) }}"><i class="fas fa-eye"></i> </a></td>
+                        </tr>
+                        {% endif %}
+                {% endfor %}
+                    </tbody>
+                </table>
+
+
+        {% else %}
+            <p class="card-text">Locatie: Er zijn geen locatie gevonden.</p>
+
+            {% endif %}
+
+        </div>
+    </div>
+    </div>{% endblock %}

@@ -354,6 +354,11 @@ class ZwolleGegevens
      */
     private $gebruikersid;
 
+    /**
+     * @ORM\Column(name="gechecked",type="text", nullable=true)
+     */
+    private $gechecked;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -931,6 +936,18 @@ class ZwolleGegevens
     public function setGebruikersid(?string $gebruikersid): self
     {
         $this->gebruikersid = $gebruikersid;
+
+        return $this;
+    }
+
+    public function getGechecked(): ?string
+    {
+        return $this->gechecked;
+    }
+
+    public function setGechecked(?string $gechecked): self
+    {
+        $this->gechecked = $gechecked;
 
         return $this;
     }
