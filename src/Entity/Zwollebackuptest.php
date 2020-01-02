@@ -344,6 +344,11 @@ class Zwollebackuptest
      */
     private $notes;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\image", cascade={"persist", "remove"})
+     */
+//    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -900,6 +905,16 @@ class Zwollebackuptest
 
         return $this;
     }
+
+//    public function getImage(): ?image
+//    {
+//        return $this->image;
+//    }
+//
+//    public function setImage(image $image): void
+//    {
+//        $this->image = $image;
+//    }
 
 
 }

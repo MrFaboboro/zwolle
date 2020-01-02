@@ -92,7 +92,8 @@ class Controller extends AbstractController
                 'required' => true,
                 'trim' => true,
                 'label' => false,
-                'attr' => array('placeholder' => 'Zoek naar bedrijven, branches, postcodes, straatnamen etc...' )
+                'attr' => array('placeholder' => 'Zoek naar bedrijven, branches, postcodes, straatnamen etc...' ),
+
             ])
             ->add('submit', SubmitType::class, ['label' => 'Zoek'])
             ->getForm()
