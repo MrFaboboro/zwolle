@@ -32,15 +32,12 @@
          </div>
      </nav>
      <div class="container-fluid search-line fixed-top">
-         <div class="container">
+         <div class="container-fluid">
          {{ form_start(form) }}
-             <div class="col-12">
-                 <div class="col-11">
-                     {{ form_row(form.Zoek) }}
-                 </div>
-                <div class="col-1">
-                    <button type="submit" class="btn btn-primary search-button-search" id="search-button-addon">&#128269;</button>
-                </div>
+             <div class="col-12" style="padding-top: 5px;">
+{#                 <button type="submit" style="width: 80px; height: 38px" class="btn btn-primary search-button-search" id="search-button-addon">&#128269;</button>#}
+{#                 {{ form_row(form.Zoek) }}#}
+                 {{ form_row(form.submit) }}
              </div>
          {{ form_end(form) }}
         </div>

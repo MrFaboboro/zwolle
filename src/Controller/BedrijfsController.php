@@ -19,15 +19,14 @@ class BedrijfsController extends AbstractController
     {
         $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('handleSearch'))
+            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
             ->add('Zoek', TextType::class, [
                 'required' => true,
                 'trim' => true,
                 'label' => false,
                 'attr' => array('placeholder' => 'Zoek naar bedrijven, branches, postcodes, straatnamen etc...'),
                 'row_attr' => ['class' => 'form-group'],
-
             ])
-//            ->add('submit', SubmitType::class, ['label' => 'Zoek'])
             ->getForm()
         ;
 
