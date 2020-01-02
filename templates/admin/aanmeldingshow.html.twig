@@ -1,0 +1,135 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block body %}
+    <style>body {font-family: Arial, Helvetica, sans-serif;}
+        * {box-sizing: border-box;}
+
+        input1[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        p.parajessep{
+
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        p.parajesse2p{
+
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+
+        .container {
+            border-radius: 5px;
+            background-color: white;
+            padding: 20px;
+        }</style>
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('admin') }}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Aanmelding</li>
+            </ol>
+
+            <div class="row">
+                {% if aanmeldingen %}
+                    {% for aanmeld in aanmeldingen %}
+
+                        <div class="container">
+                            <h4 for="fname">Data</h4>
+                            <p class="parajessep">{{ aanmeld.DATA }}</p>
+
+                            <h4 for="fname">Source</h4>
+                            <p class="parajessep">{{ aanmeld.SOURCE }}</p>
+
+                            <h4 for="fname">Bedrijfsnaam</h4>
+                            <p class="parajessep">{{ aanmeld.ORG }}</p>
+
+                            <h4 for="fname">Adresgegevens</h4>
+                            <p class="parajessep">{{ aanmeld.ADD1 }} {{ aanmeld.ADD2 }} {{ aanmeld.ADD3 }} {{ aanmeld.PC }} {{ aanmeld.CITY }}</p>
+
+                            <h4 for="fname">Website</h4>
+                            <p class="parajessep">{{ aanmeld.Address }}</p>
+
+                            <h4 for="fname">Primair emailadres</h4>
+                            <p class="parajessep">{{ aanmeld.Email1 }}</p>
+
+                            <h4 for="fname">Secundair emailadres</h4>
+                            <p class="parajessep">{{ aanmeld.EmailAlt }}</p>
+
+                            <h4 for="fname">Primair telefoonnummer</h4>
+                            <p class="parajessep">{{ aanmeld.Phone1 }}</p>
+
+                            <h4 for="fname">Secundair telefoonnummer</h4>
+                            <p class="parajessep">{{ aanmeld.PhoneAlt }}</p>
+
+                            <h4 for="fname">Facebook</h4>
+                            <p class="parajessep">{{ aanmeld.Facebook }}</p>
+
+                            <h4 for="fname">Twitter</h4>
+                            <p class="parajessep">{{ aanmeld.Twitter }}</p>
+
+                            <h4 for="fname">Linkedin</h4>
+                            <p class="parajessep">{{ aanmeld.Linkedin }}</p>
+
+                            <h4 for="fname">Pinterest</h4>
+                            <p class="parajessep">{{ aanmeld.Pintrest }}</p>
+
+                            <h4 for="fname">Instagram</h4>
+                            <p class="parajessep">{{ aanmeld.Instagram }}</p>
+
+                            <h4 for="fname">Youtube</h4>
+                            <p class="parajessep">{{ aanmeld.Youtube }}</p>
+
+                            <h4 for="fname">KVK nummer</h4>
+                            <p class="parajessep">{{ aanmeld.No }}</p>
+
+                            <h4 for="fname">VestingLCL</h4>
+                            <p class="parajessep">{{ aanmeld.No1 }}</p>
+
+                            <h4 for="fname">Vestinghead</h4>
+                            <p class="parajessep">{{ aanmeld.No2 }}</p>
+
+                            <h4 for="fname">Post adres</h4>
+                            <p class="parajessep">{{ aanmeld.POSTHead }} {{ aanmeld.POSTCODEHead }} {{ aanmeld.CITYHead }}</p>
+
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Er Zijn Geen Gegevens Gevonden!</p>
+                {% endif %}
+
+            </div>
+            <div>
+                <a href="{{ path('aanmeldingen') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
+
+                {{ form_start(form) }}
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
