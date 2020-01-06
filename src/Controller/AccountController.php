@@ -21,6 +21,12 @@ class AccountController extends AbstractController
      */
     public function index(Request $request, UserInterface $user)
     {
+        $em = $this->getDoctrine()->getManager();
+        $repoArticles = $em->getRepository(ZwolleGegevens::class);
+
+        $zwollegegevens = $repoArticles->createQueryBuilder('a')->select('count(a.id)')->getQuery()->getSingleScalarResult();
+
+
         $userId = $user->getId();
         $em = $this->getDoctrine()->getManager();
         $aanmeld = new ZwolleGegevens();
@@ -38,7 +44,8 @@ class AccountController extends AbstractController
 
         }
             return $this->render('account/index.html.twig', [
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'zwollegegevens' => $zwollegegevens
 
         ]);
     }

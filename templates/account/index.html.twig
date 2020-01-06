@@ -1,18 +1,16 @@
 {% extends 'base.html.twig' %}
-{% block search %} <header class="bg-primary text-white">
-    <div class="container text-center">
-        <h1>Welcome to Scrolling Nav</h1>
-        <p class="lead">A landing page template freshly redesigned for Bootstrap 4</p>
-    </div>
-</header>
+{% block search %}
 
 
 
 
 {% endblock %}
 {% block body %}
+    {% if zwollegegevens.gebruikersid == null %}
 {{ form_start(form) }}
 
 {{ form_end(form) }}
+
+{% endif %}
 
 {% endblock %}

@@ -11,16 +11,15 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="{{ path('home') }}">Home</a>
-                  </li>
+
 
               </ul>
 
-              <div class="form-inline">
+              <form class="form-inline my-2 my-lg-0">
                   {{ form_start(form) }}
 
-                      {{ form_row(form.Zoek, {label_attr: {class: 'form-control mr-sm-2'} }) }}
+                      {{ form_row(form.Zoek, {label_attr : {class: 'form-control mr-sm-2'} }) }}
+                  {{ form_row(form.submit, {label_attr: {class: 'btn btn-outline-success my-2 my-sm-0'} }) }}
 
 
               </div>
@@ -36,11 +35,6 @@
 
                   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          <p style="margin-top: 22px;">Welkom, {{ app.user.username }}</p>
-                      </a>
-                  </li>
                   <li class="nav-item dropdown no-arrow">
                       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i style="font-size: 20px;" class="fa fa-user" aria-hidden="true"></i>
