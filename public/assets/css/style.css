@@ -180,9 +180,12 @@ header{
 }
 
 footer {
-  background: #202322;
+  background: #343a40;
   padding: 42px 0 20px 0;
   text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 footer p {
   font-size: 14px;

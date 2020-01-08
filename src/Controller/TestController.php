@@ -2,18 +2,24 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TestController extends AbstractController
 {
     /**
-     * @Route("/test", name="test")
+     * @Route("/test", methods="GET", name="admin_utility_users")
      */
-    public function index()
+    public function getUsersApi(UserRepository $userRepository, Request $request)
     {
-        return $this->render('test/index.html.twig', [
-            'controller_name' => 'TestController',
-        ]);
+        $users = $userRepository->findAllMatching($request->query->get('query'));
+
+        return $this->json([
+            'users' => $users
+        ], 200, [], ['groups' => ['main']]);
     }
 }

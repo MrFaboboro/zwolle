@@ -43,6 +43,19 @@ class ZwolleGegevensRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return zwolle[]
+     */
+    public function findAllMatching(string $query, int $limit = 5)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.org LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return ZwolleGegevens[] Returns an array of ZwolleGegevens objects
     //  */

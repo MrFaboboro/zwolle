@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block search %}
+
+{% endblock %}
+{% block body %}
+    <style>
+        footer {
+            background: #343a40;
+            padding: 42px 0 20px 0;
+            text-align: center;
+            position: relative;
+            margin-top: 30px;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">
+                <div class="list-group ">
+                    <a href="{{ path('app_account') }}" class="list-group-item list-group-item-action ">Profiel overzicht</a>
+                    <a href="{{ path('bedrijven') }}" class="list-group-item list-group-item-action ">Mijn bedrijven</a>
+                    <a href="{{ path('bedrijf_aanmaken') }}" class="list-group-item list-group-item-action ">Nieuw bedrijf aanmaken</a>
+
+
+
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card" style="border-style: solid;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Bedrijf aanmaken</h4>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="container">
+                            {{ form_start(form) }}
+                            {{ form_widget(form.voornaam, { value : Voornaam }) }}
+                            {{ form_widget(form.achternaam, { value : Achternaam }) }}
+                            {{ form_end(form) }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

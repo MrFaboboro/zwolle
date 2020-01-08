@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block search %}
+
+{% endblock %}
+{% block body %}
+    <style>
+        footer {
+            background: #343a40;
+            padding: 42px 0 20px 0;
+            text-align: center;
+            position: absolute;
+            margin-top: 30px;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+    <div class="container">
+    <div class="row">
+    <div class="col-md-3 ">
+        <div class="list-group ">
+            <a href="{{ path('app_account') }}" class="list-group-item list-group-item-action ">Profiel overzicht</a>
+            <a href="{{ path('bedrijven') }}" class="list-group-item list-group-item-action active">Mijn bedrijven</a>
+            <a href="{{ path('bedrijf_aanmaken') }}" class="list-group-item list-group-item-action ">Nieuw bedrijf aanmaken</a>
+
+
+
+        </div>
+    </div>
+
+            <div class="col-md-9">
+                <div class="card" style="border-style: solid;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Mijn bedrijven</h4>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                {% if ZwolleGegevens %}
+                                    {% for ZwolleGegevens in ZwolleGegevens %}
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                                            <div class="card">
+                                                <img class="card-img-top" src="../../assets/images/testimage.png" />
+                                                <div class="card-body">
+                                                    <h4 class="card-title">
+                                                        <p class="bedrijfs-title">{{ZwolleGegevens.ORG}}</p>
+                                                    </h4>
+                                                        <p class="card-text">Naam: {{ ZwolleGegevens.ADD1 }}</p>
+                                                        <p class="card-text">Locatie: Er zijn geen locatie gevonden.</p>
+                                                    {% if ZwolleGegevens.CLASS == 1 %}
+                                                        <p class="card-text">Type: {{ ZwolleGegevens.Desc1 }}</p>
+                                                    {% else %}
+                                                        <p class="card-text">Type: Niets gevonden</p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a class="btn btn-outline-primary bedrijfs-button" href="{{ path('bedrijf', { 'slug' :  ZwolleGegevens.id }) }}">Bekijk bedrijf</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>Er zijn geen reaultaaten gevonden.</p>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
+{% endblock %}

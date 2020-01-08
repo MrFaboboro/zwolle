@@ -46,7 +46,6 @@
 
         <div class="container-fluid">
 
-            <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{ path('admin') }}">Dashboard</a>
@@ -55,81 +54,230 @@
             </ol>
 
             <div class="row">
-                {% if aanmeldingen %}
-                    {% for aanmeld in aanmeldingen %}
+                {% if aanmeld %}
+                    {% for aanmeld in aanmeld %}
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Informatie van {{aanmeld.ORG}}</h4>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form>
+                                                <div class="form-group row">
+                                                    <label for="username" class="col-4 col-form-label">Datatype</label>
+                                                    <div class="col-8">
+                                                        <input id="username" name="username"  value="{{aanmeld.DATA}}" class="form-control here" required="required" readonly >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="name" class="col-4 col-form-label">Bron</label>
+                                                    <div class="col-8">
+                                                        <input id="name" name="name" value="{{aanmeld.SOURCE}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="lastname" class="col-4 col-form-label">Adressen</label>
+                                                    <div class="col-8">
+                                                        <input id="lastname" name="lastname" value="{{aanmeld.LOC}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Adres gegevens</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.ADD1}} {{aanmeld.ADD2}}  {{aanmeld.ADD3}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="username" class="col-4 col-form-label">Postcode</label>
+                                                    <div class="col-8">
+                                                        <input id="username" name="username"  value="{{aanmeld.PC}}" class="form-control here" required="required" readonly >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="name" class="col-4 col-form-label">Stad</label>
+                                                    <div class="col-8">
+                                                        <input id="name" name="name" value="{{aanmeld.CITY}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="lastname" class="col-4 col-form-label">Website</label>
+                                                    <div class="col-8">
+                                                        <input id="lastname" name="lastname" value="{{aanmeld.WEB}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="email" class="col-4 col-form-label">Email</label>
+                                                    <div class="col-8">
+                                                        <input id="email" name="email" value="{{aanmeld.Email1}}"  class="form-control here" required="required" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Alt email</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.EmailAlt}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="username" class="col-4 col-form-label">Telefoonnummer</label>
+                                                    <div class="col-8">
+                                                        <input id="username" name="username"  value="{{aanmeld.Phone1}}" class="form-control here" required="required" readonly >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="name" class="col-4 col-form-label">Alt telefoonnummer</label>
+                                                    <div class="col-8">
+                                                        <input id="name" name="name" value="{{aanmeld.PhoneAlt}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="lastname" class="col-4 col-form-label">Locatie Google</label>
+                                                    <div class="col-8">
+                                                        <input id="lastname" name="lastname" value="{{aanmeld.Location}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="email" class="col-4 col-form-label">Facebook</label>
+                                                    <div class="col-8">
+                                                        <input id="email" name="email" value="{{aanmeld.Facebook}}"  class="form-control here" required="required" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Twitter</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.Twitter}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Linkedin</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.Linkedin}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Pinterest</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.Pintrest}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Instagram</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.Instagram}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Youtube</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.Youtube}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Whatsapp</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.Whatsapp}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">KVK</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.KVK}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">Nummer</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.No}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">VestingLCL</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.VestingLCL}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">No1</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.No1}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">VESTINGHead</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.VESTINGHead}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">No2</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.No2}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">POSTHead</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.POSTHead}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">POSTCODEHead</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.POSTCODEHead}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">CITYHead</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.CITYHead}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="website" class="col-4 col-form-label">NOTES</label>
+                                                    <div class="col-8">
+                                                        <input id="website" name="website" value="{{aanmeld.NOTES}}"  class="form-control here" type="text" readonly>
+                                                    </div>
+                                                </div>
 
-                        <div class="container">
-                            <h4 for="fname">Data</h4>
-                            <p class="parajessep">{{ aanmeld.DATA }}</p>
 
-                            <h4 for="fname">Source</h4>
-                            <p class="parajessep">{{ aanmeld.SOURCE }}</p>
+                                            </form>
+                                            {% if aanmeld.gechecked == null %}
 
-                            <h4 for="fname">Bedrijfsnaam</h4>
-                            <p class="parajessep">{{ aanmeld.ORG }}</p>
+                                                <a href="{{ path('aanmelding_update', {'id' : aanmeld.id}) }}) }}"><button type="button" class="btn btn-outline-success" style="color: black;">Accepteren</button></a>
+                                                <a href="{{ path('aanmelding_delete', {'id' : aanmeld.id}) }}) }}"><button type="button" class="btn btn-outline-danger" style="color: black;">Afwijzen</button></a>
 
-                            <h4 for="fname">Adresgegevens</h4>
-                            <p class="parajessep">{{ aanmeld.ADD1 }} {{ aanmeld.ADD2 }} {{ aanmeld.ADD3 }} {{ aanmeld.PC }} {{ aanmeld.CITY }}</p>
+                                            {% endif %}
+                                            <a href="{{ path('admin') }}"><button type="button" class="btn btn-outline-primary" style="color: black;">Ga Terug</button></a>
+                                        </div>
+                                    </div>
 
-                            <h4 for="fname">Website</h4>
-                            <p class="parajessep">{{ aanmeld.Address }}</p>
-
-                            <h4 for="fname">Primair emailadres</h4>
-                            <p class="parajessep">{{ aanmeld.Email1 }}</p>
-
-                            <h4 for="fname">Secundair emailadres</h4>
-                            <p class="parajessep">{{ aanmeld.EmailAlt }}</p>
-
-                            <h4 for="fname">Primair telefoonnummer</h4>
-                            <p class="parajessep">{{ aanmeld.Phone1 }}</p>
-
-                            <h4 for="fname">Secundair telefoonnummer</h4>
-                            <p class="parajessep">{{ aanmeld.PhoneAlt }}</p>
-
-                            <h4 for="fname">Facebook</h4>
-                            <p class="parajessep">{{ aanmeld.Facebook }}</p>
-
-                            <h4 for="fname">Twitter</h4>
-                            <p class="parajessep">{{ aanmeld.Twitter }}</p>
-
-                            <h4 for="fname">Linkedin</h4>
-                            <p class="parajessep">{{ aanmeld.Linkedin }}</p>
-
-                            <h4 for="fname">Pinterest</h4>
-                            <p class="parajessep">{{ aanmeld.Pintrest }}</p>
-
-                            <h4 for="fname">Instagram</h4>
-                            <p class="parajessep">{{ aanmeld.Instagram }}</p>
-
-                            <h4 for="fname">Youtube</h4>
-                            <p class="parajessep">{{ aanmeld.Youtube }}</p>
-
-                            <h4 for="fname">KVK nummer</h4>
-                            <p class="parajessep">{{ aanmeld.No }}</p>
-
-                            <h4 for="fname">VestingLCL</h4>
-                            <p class="parajessep">{{ aanmeld.No1 }}</p>
-
-                            <h4 for="fname">Vestinghead</h4>
-                            <p class="parajessep">{{ aanmeld.No2 }}</p>
-
-                            <h4 for="fname">Post adres</h4>
-                            <p class="parajessep">{{ aanmeld.POSTHead }} {{ aanmeld.POSTCODEHead }} {{ aanmeld.CITYHead }}</p>
-
+                                </div>
+                            </div>
                         </div>
+                        </div>
+                        </div>
+
+
+                </div>
                     {% endfor %}
                 {% else %}
                     <p>Er Zijn Geen Gegevens Gevonden!</p>
                 {% endif %}
 
-            </div>
-            <div>
-                <a href="{{ path('aanmeldingen') }}"><button type="button" class="btn btn-warning" style="color: black;">Ga Terug</button></a>
 
-                {{ form_start(form) }}
 
-                {{ form_end(form) }}
-            </div>
+
+
+                {#                {{ form_start(form) }}#}
+{#                {{ form_row(form.gechecked) }}#}
+{#                {{ form_row(form.Verzenden) }}#}
+
+{#                {{ form_end(form, {'render_rest': false}) }}   #}
+
         </div>
     </div>
 {% endblock %}

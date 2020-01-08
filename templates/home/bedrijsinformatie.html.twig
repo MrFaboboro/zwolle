@@ -15,17 +15,10 @@
         </ul>
 
         <form class="form-inline my-2 my-lg-0">
-            {{ form_start(form) }}
-
-            {{ form_row(form.Zoek, {label_attr : {class: 'form-control mr-sm-2'} }) }}
-            {{ form_row(form.submit, {label_attr: {class: 'btn btn-outline-success my-2 my-sm-0'} }) }}
+            <a href="{{ path('home') }}" type="button" class="btn btn-primary">Verder met zoeken</a>
 
 
-    </div>
-    {{ form_end(form) }}
-
-
-    <ul class="nav navbar-nav ml-auto">
+            <ul class="nav navbar-nav ml-auto">
 
 
         <ul class="navbar-nav ml-auto mx-auto">

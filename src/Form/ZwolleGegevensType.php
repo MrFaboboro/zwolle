@@ -63,9 +63,11 @@ class ZwolleGegevensType extends AbstractType
             ->add('cityhead')
             ->add('notes')
             ->add('gebruikersid', HiddenType::class)
+            ->add('gechecked', HiddenType::class)
             ->add('Verzenden', SubmitType::class)
         ;
     }
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

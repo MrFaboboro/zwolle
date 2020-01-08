@@ -1,0 +1,6 @@
+{% if results is defined and results is iterable and results|length >= 1 %}
+{% for result in results %}
+<p style="display:inline-block;width:200px;">{{ result.fullname }}</p>
+
+{% endfor %}
+{% endif %}
