@@ -1,189 +1,242 @@
 {% extends 'base.html.twig' %}
- {% block navbar %}
+{% block navbar %}
 
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-    <a class="navbar-brand" href="{{ path('home') }}">
-        <img src="../../assets/images/logozwolle.png" >
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
+	<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+		<a class="navbar-brand" href="{{ path('home') }}">
+			<img src="../../assets/images/logozwolle.png">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto"></ul>
 
-
-        </ul>
-
-        <form class="form-inline my-2 my-lg-0">
-            <a href="{{ path('home') }}" type="button" class="btn btn-primary">Verder met zoeken</a>
+			<form class="form-inline my-2 my-lg-0">
+				<a href="{{ path('home') }}" type="button" class="btn btn-primary">Verder met zoeken</a>
 
 
-            <ul class="nav navbar-nav ml-auto">
+				<ul class="nav navbar-nav ml-auto">
 
 
-        <ul class="navbar-nav ml-auto mx-auto">
+					<ul class="navbar-nav ml-auto mx-auto"></ul>
 
-        </ul>
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i style="font-size: 20px;" class="fa fa-user" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ path('app_account') }}">Instellingen</a>
-                <div class="dropdown-divider"></div>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="dropdown-item" href="{{ path('admin') }}">Admin</a>
-                    <div class="dropdown-divider"></div>
-                {% endif %}
-                <a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">Uitloggen</a>
-            </div>
-        </li>
-    </ul>
-{% else %}
-    <li class="nav-item">
-        <a class="nav-link"  style="margin-top: 20px;" href="{{ path('app_login') }}">
-            <p>Inloggen</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" style="margin-top: 20px;" href="{{ path('app_register') }}">
-            <p>Registreren</p>
-        </a>
-    </li>
+						<li class="nav-item dropdown no-arrow">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i style="font-size: 20px;" class="fa fa-user" aria-hidden="true"></i>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="{{ path('app_account') }}">Instellingen</a>
+								<div class="dropdown-divider"></div>
+								{% if is_granted('ROLE_ADMIN') %}
+									<a class="dropdown-item" href="{{ path('admin') }}">Admin</a>
+									<div class="dropdown-divider"></div>
+								{% endif %}
+								<a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">Uitloggen</a>
+							</div>
+						</li>
+					</ul>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" style="margin-top: 20px;" href="{{ path('app_login') }}">
+							<p>Inloggen</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" style="margin-top: 20px;" href="{{ path('app_register') }}">
+							<p>Registreren</p>
+						</a>
+					</li>
 
 
-    {% endif %}
-    </div>
-</nav>
+				{% endif %}
+			</div>
+		</nav>
 
-{% endblock %}
-  {% block search %}{% endblock %}
-{% block body %}
-
-{% if ZwolleGegevens %}
-    <div style="padding-top: 40px;" class="row">
-        {% for ZwolleGegevens in ZwolleGegevens %}
-            <div class="container">
-                    <div style="width: 100%;position: relative;"><iframe width="100%" height="300px" src="https://maps.google.com/maps?width=100%&amp;height=300&amp;hl=en&amp;q={{ ZwolleGegevens.ADD1 }}%20{{ ZwolleGegevens.ADD2 }}%20{{ ZwolleGegevens.PC }}%20{{ ZwolleGegevens.CITY }}+(test)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
-                </div>
-            <div class="container bedrijfs-informatie">
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <h2>Beschrijving</h2>
-                        <hr>
-                        <img class="img-fluid" src="../../assets/images/testimage.png"/>
-{#                        <iframe class="fluid street-view" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyApOlfRB6tQ6zKS4UFT2_rguC2xX8SVnMM&location=46.414382,10.013988&heading=210&pitch=10&fov=35">#}
-{#                        </iframe>#}
-                        <hr>
-                        <p class="font-weight-light">
-                            ANNE wil Noordoost-Nederland versterken. Met gevoel voor wat van waarde is, leeft, speelt en werkt. We denken, doen en verbinden. En bouwen mee aan het Noordoosten van morgen.
-                        </p>
-                    </div>
-                    <div class="col-md-6 col-sm-12" >
-                        <h2>Bedrijfs Informatie</h2>
-                        <hr>
-                           {% if ZwolleGegevens.LOC == 1 %}
-                                <p class="card-text">Adres: {{ ZwolleGegevens.ADD1 }} {{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }}, {{ ZwolleGegevens.PC }}</p>
-                            {% else %}
-                                <p class="card-text">Locatie: Er zijn geen locatie gevonden.</p>
-                            {% endif %}
-
-                            {% if ZwolleGegevens.WEB == 1 %}
-                                <p class="card-text">Website: <a href="http://www.{{ ZwolleGegevens.Address }}" target="_blank">http://www.{{ ZwolleGegevens.Address }}</a></p>
-                            {% else %}
-                                <p class="card-text">Website: Er is geen website gevonden.</p>
-                            {% endif %}
-
-                            {% if ZwolleGegevens.EMAIL == 1 %}
-                                <p class="card-text">E-Mailadres 1: <a href="mailto:{{ ZwolleGegevens.Email1 }}">{{ ZwolleGegevens.Email1 }}</a></p>
-                                {% if ZwolleGegevens.EmailAlt %}
-                                <p class="card-text">E-Mailadres 2: <a href="mailto:{{ ZwolleGegevens.EmailAlt }}">{{ ZwolleGegevens.EmailAlt }}</a></p>
-                                {% else %}
-                                {% endif %}
-                            {% else %}
-                                <p class="card-text">E-Mailadres: Er is geen E-mailadres gevonden.</p>
-                            {% endif %}
-
-                            {% if ZwolleGegevens.PHONE == 1 %}
-                                <p class="card-text">Tel 1: <a href="tel:{{ ZwolleGegevens.Phone1 }}">{{ ZwolleGegevens.Phone1 }}</a></p>
-                                {% if ZwolleGegevens.PhoneAlt %}
-                                    <p class="card-text">Tel 2: <a href="tel:{{ ZwolleGegevens.PhoneAlt }}">{{ ZwolleGegevens.PhoneAlt }}</a></p>
-                                {% else %}
-                                {% endif %}
-                            {% else %}
-                                <p class="card-text">Tel: Er is geen telefoonnummer gevonden.</p>
-                            {% endif %}
-
-                            {% if ZwolleGegevens.GGPOS == 1 %}
-                                <p class="card-text">Google Maps Locatie: {{ ZwolleGegevens.Location }} </p>
-                            {% else %}
-                                <p class="card-text">Google Maps Locatie: Er is geen locatie gevonden.</p>
-                            {% endif %}
-
-                            {% if ZwolleGegevens.GGRAT == 1 %}
-                                <p class="card-text">Google Rating: {{ ZwolleGegevens.Stars }}</p>
-                                <p class="card-text">Google Review: {{ ZwolleGegevens.RevNo }}</p>
-                            {% else %}
-                                <p class="card-text">Google Rating: Er is geen rating gevonden.</p>
-                                <p class="card-text">Google Review: Er zijn geen reviews gevonden.</p>
-                            {% endif %}
-
-                            {% if ZwolleGegevens.GOOGLE == 1 %}
-                                <p class="card-text">Google Type: {{ ZwolleGegevens.Desc }}</p>
-                            {% else %}
-                                <p class="card-text">Google Type: Er is geen google type gevonden.</p>
-                            {% endif %}
-
-                            {% if ZwolleGegevens.CLASS == 1 %}
-                                <p class="card-text">Type: {{ ZwolleGegevens.Desc1 }}</p>
-                            {% else %}
-                                <p class="card-text">Type: Er is geen branch gevonden.</p>
-                            {% endif %}
+	{% endblock %}
+	{% block search %}{% endblock %}
+	{% block style %}
+		<style>
+			#map {
+				position: absolute !important;
+				top: 0 !important;
+				bottom: 0 !important;
+				left: 0 !important;
+				right: 0 !important;
+			}
+		</style>
+	{% endblock %}
 
 
-                            {% if ZwolleGegevens.CAT == 1 %}
-                                <p class="card-text">branch: {{ ZwolleGegevens.Desc2 }}</p>
-                            {% else %}
-                                <p class="card-text">branch: Er is geen type gevonden.</p>
-                            {% endif %}
-                                </div>
-                                 <div style="text-align: center;" class="card-body">
-                            {% if ZwolleGegevens.Facebook %}
-                                <a href="{{ ZwolleGegevens.Facebook }}" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-                            {% else %}
-                            {% endif %}
+	{% block body %}
 
-                            {% if ZwolleGegevens.Twitter %}
-                                <a href="{{ ZwolleGegevens.Twitter }}" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
-                            {% else %}
-                            {% endif %}
+		{% if ZwolleGegevens %}
+			<div style="padding-top: 40px;" class="row">
+				{% for ZwolleGegevens in ZwolleGegevens %}
+					<div class="container">
+						<div style="width: 100%;position: relative;">
+							<div id="map"></div>
+							<style>
+								#gmap_canvas img {
+									max-width: none !important;
+									background: none !important
+								}
+							</style>
+						</div>
+					</div>
+					<div class="container bedrijfs-informatie">
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								<h2>Beschrijving</h2>
+								<hr>
+								<img class="img-fluid" src="../../assets/images/testimage.png"/>
+								<hr>
+								<p class="font-weight-light">
+									ANNE wil Noordoost-Nederland versterken. Met gevoel voor wat van waarde is, leeft, speelt en werkt. We denken, doen en verbinden. En bouwen mee aan het Noordoosten van morgen.
+								</p>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<h2>Bedrijfs Informatie</h2>
+								<hr>
+								{% if ZwolleGegevens.LOC == 1 %}
+									<p class="card-text">Adres:
+										{{ ZwolleGegevens.ADD1 }}
+										{{ ZwolleGegevens.ADD2 }}{{ ZwolleGegevens.ADD3 }},
+										{{ ZwolleGegevens.PC }}</p>
+								{% else %}
+									<p class="card-text">Locatie: Er zijn geen locatie gevonden.</p>
+								{% endif %}
 
-                            {% if ZwolleGegevens.Linkedin %}
-                                <a href="{{ ZwolleGegevens.Linkedin }}" target="_blank" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
-                            {% else %}
-                            {% endif %}
+								{% if ZwolleGegevens.WEB == 1 %}
+									<p class="card-text">Website:
+										<a href="http://www.{{ ZwolleGegevens.Address }}" target="_blank">http://www.{{ ZwolleGegevens.Address }}</a>
+									</p>
+								{% else %}
+									<p class="card-text">Website: Er is geen website gevonden.</p>
+								{% endif %}
 
-                            {% if ZwolleGegevens.Pintrest %}
-                                <a href="{{ ZwolleGegevens.Pintrest }}" target="_blank" class="btn-social btn-pinterest"><i class="fa fa-pinterest"></i></a>
-                            {% else %}
-                            {% endif %}
+								{% if ZwolleGegevens.EMAIL == 1 %}
+									<p class="card-text">E-Mailadres 1:
+										<a href="mailto:{{ ZwolleGegevens.Email1 }}">{{ ZwolleGegevens.Email1 }}</a>
+									</p>
+									{% if ZwolleGegevens.EmailAlt %}
+										<p class="card-text">E-Mailadres 2:
+											<a href="mailto:{{ ZwolleGegevens.EmailAlt }}">{{ ZwolleGegevens.EmailAlt }}</a>
+										</p>
+										{% else %}
+									{% endif %}
+								{% else %}
+									<p class="card-text">E-Mailadres: Er is geen E-mailadres gevonden.</p>
+								{% endif %}
 
-                            {% if ZwolleGegevens.Instagram %}
-                                <a href="{{ ZwolleGegevens.Instagram }}" target="_blank" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
-                            {% else %}
-                            {% endif %}
+								{% if ZwolleGegevens.PHONE == 1 %}
+									<p class="card-text">Tel 1:
+										<a href="tel:{{ ZwolleGegevens.Phone1 }}">{{ ZwolleGegevens.Phone1 }}</a>
+									</p>
+									{% if ZwolleGegevens.PhoneAlt %}
+										<p class="card-text">Tel 2:
+											<a href="tel:{{ ZwolleGegevens.PhoneAlt }}">{{ ZwolleGegevens.PhoneAlt }}</a>
+										</p>
+										{% else %}
+									{% endif %}
+								{% else %}
+									<p class="card-text">Tel: Er is geen telefoonnummer gevonden.</p>
+								{% endif %}
 
-                            {% if ZwolleGegevens.Youtube %}
-                              <a href="{{ ZwolleGegevens.Youtube }}" target="_blank" class="btn-social btn-youtube"><i class="fa fa-youtube"></i></a>
-                            {% else %}
-                            {% endif %}
-                        {% endfor %}
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-    </div>
-{% endblock %}
+								{% if ZwolleGegevens.GGPOS == 1 %}
+									<p class="card-text">Google Maps Locatie:
+										{{ ZwolleGegevens.Location }}
+									</p>
+								{% else %}
+									<p class="card-text">Google Maps Locatie: Er is geen locatie gevonden.</p>
+								{% endif %}
+
+								{% if ZwolleGegevens.GGRAT == 1 %}
+									<p class="card-text">Google Rating:
+										{{ ZwolleGegevens.Stars }}</p>
+									<p class="card-text">Google Review:
+										{{ ZwolleGegevens.RevNo }}</p>
+								{% else %}
+									<p class="card-text">Google Rating: Er is geen rating gevonden.</p>
+									<p class="card-text">Google Review: Er zijn geen reviews gevonden.</p>
+								{% endif %}
+
+								{% if ZwolleGegevens.GOOGLE == 1 %}
+									<p class="card-text">Google Type:
+										{{ ZwolleGegevens.Desc }}</p>
+								{% else %}
+									<p class="card-text">Google Type: Er is geen google type gevonden.</p>
+								{% endif %}
+
+								{% if ZwolleGegevens.CLASS == 1 %}
+									<p class="card-text">Type:
+										{{ ZwolleGegevens.Desc1 }}</p>
+								{% else %}
+									<p class="card-text">Type: Er is geen branch gevonden.</p>
+								{% endif %}
+
+
+								{% if ZwolleGegevens.CAT == 1 %}
+									<p class="card-text">branch:
+										{{ ZwolleGegevens.Desc2 }}</p>
+								{% else %}
+									<p class="card-text">branch: Er is geen type gevonden.</p>
+								{% endif %}
+							</div>
+							<div style="text-align: center;" class="card-body">
+								{% if ZwolleGegevens.Facebook %}
+									<a href="{{ ZwolleGegevens.Facebook }}" target="_blank" class="btn-social btn-facebook">
+										<i class="fa fa-facebook"></i>
+									</a>
+									{% else %}
+								{% endif %}
+
+								{% if ZwolleGegevens.Twitter %}
+									<a href="{{ ZwolleGegevens.Twitter }}" target="_blank" class="btn-social btn-twitter">
+										<i class="fa fa-twitter"></i>
+									</a>
+									{% else %}
+								{% endif %}
+
+								{% if ZwolleGegevens.Linkedin %}
+									<a href="{{ ZwolleGegevens.Linkedin }}" target="_blank" class="btn-social btn-linkedin">
+										<i class="fa fa-linkedin"></i>
+									</a>
+									{% else %}
+								{% endif %}
+
+								{% if ZwolleGegevens.Pintrest %}
+									<a href="{{ ZwolleGegevens.Pintrest }}" target="_blank" class="btn-social btn-pinterest">
+										<i class="fa fa-pinterest"></i>
+									</a>
+									{% else %}
+								{% endif %}
+
+								{% if ZwolleGegevens.Instagram %}
+									<a href="{{ ZwolleGegevens.Instagram }}" target="_blank" class="btn-social btn-instagram">
+										<i class="fa fa-instagram"></i>
+									</a>
+									{% else %}
+								{% endif %}
+
+								{% if ZwolleGegevens.Youtube %}
+									<a href="{{ ZwolleGegevens.Youtube }}" target="_blank" class="btn-social btn-youtube">
+										<i class="fa fa-youtube"></i>
+									</a>
+									{% else %}
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<h1>LEAFLET.JS</h1>
+	{% endblock %}

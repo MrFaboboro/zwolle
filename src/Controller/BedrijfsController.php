@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\Zwollebackuptest;
@@ -27,8 +28,7 @@ class BedrijfsController extends AbstractController
                 'attr' => array('placeholder' => 'Zoek naar bedrijven, branches, postcodes, straatnamen etc...'),
                 'row_attr' => ['class' => 'form-group'],
             ])
-            ->getForm()
-        ;
+            ->getForm();
 
         $zoek = $request->request->get('form')['Zoek'];
         if ($zoek) {
@@ -40,10 +40,9 @@ class BedrijfsController extends AbstractController
             'id' => $slug
         ]);
 
-        return $this->render('home/bedrijsinformatie.html.twig',[
+        return $this->render('home/bedrijsinformatie.html.twig', [
             'form' => $form->createView(),
             'ZwolleGegevens' => $ZwolleGegevens
-
         ]);
     }
 }
